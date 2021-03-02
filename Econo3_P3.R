@@ -5,7 +5,7 @@ df <- read_dta("G:/My Drive/FGV EESP/5o Semestre/Econo III/Problemas 1-4, 9 , 10
 df = df[,c(2,1,3:ncol(df))]
 df$AGEQQ <- (df$AGE)^2
 df$EXPQQ <- (df$EXP)^2
-pooled_model <- plm(EARNINGS ~ UNION, data = df, model = "pooling")
+pooled_model <- plm(EARNINGS ~ UNION + AGE + AGEQQ + MARRIED + URBAN + EXP + EXPQQ, data = df, model = "pooling")
 summary(pooled_model)
 
 # Adicionar mais regressores como controles
@@ -14,4 +14,6 @@ summary(pooled_model)
 
 fe_model <- plm(EARNINGS ~ UNION + AGE + AGEQQ + MARRIED + URBAN + EXP + EXPQQ, data = df, model = "within")
 summary(fe_model)
+summary(pooled_model)
+
 
