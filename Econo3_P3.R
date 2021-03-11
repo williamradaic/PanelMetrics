@@ -8,6 +8,8 @@ df$EXPQQ <- (df$EXP)^2
 pooled_model <- plm(EARNINGS ~ UNION + AGE + AGEQQ + MARRIED + URBAN + EXP + EXPQQ, data = df, model = "pooling")
 summary(pooled_model)
 
+df = make.pbalanced(df, balance.type = "shared.times")
+
 # Adicionar mais regressores como controles
 # O que exatamente estamos fazendo com uma pooled regression? Modelo mais próximo da regressão cross-section tradicional em que assumimos pra fora do modelo autocorrelação, correlação serial dos erros, nenhuma dinâmica? Ganhamos apenas n maior com o painel?
 # Estimativas incluem cluster indexada nos indivíduos? iid é em toda a amostra; apenas entre indivíduos diferentes. e a estrutura temporal está sendo ignorada? 
@@ -15,5 +17,12 @@ summary(pooled_model)
 fe_model <- plm(EARNINGS ~ UNION + AGE + AGEQQ + MARRIED + URBAN + EXP + EXPQQ, data = df, model = "within")
 summary(fe_model)
 summary(pooled_model)
+
+dummy_model <- lm(EARNINGS ~ UNION + AGE + AGEQQ + MARRIED + URBAN + EXP + EXPQQ + as.factor(ID), data = df)
+
+summary(dummy_model)
+
+dummy_model$coefficients
+
 
 
