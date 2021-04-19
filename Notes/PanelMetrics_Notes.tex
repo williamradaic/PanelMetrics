@@ -1,0 +1,1516 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+
+\documentclass[11pt, a4paper]{report}
+\usepackage[utf8]{inputenc}
+%\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[left=3cm,top=3cm,right=3cm,bottom=3cm]{geometry}
+%\usepackage[none]{hyphenat}
+%\usepackage{showframe}
+\usepackage{ragged2e}
+\usepackage[english]{babel}
+\usepackage{indentfirst}
+\usepackage{sectsty}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{floatrow}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{mathtools}
+\usepackage{tikz, tkz-base, tkz-fct}
+\usepackage{mathdesign}
+\usepackage{cancel}
+\usepackage{dirtytalk}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{bbm}
+
+% KnitR
+
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+\usepackage{unicode-math}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+	\usepackage[]{microtype}
+	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+	\IfFileExists{parskip.sty}{%
+		\usepackage{parskip}
+	}{% else
+		\setlength{\parindent}{0pt}
+		\setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+	\KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\urlstyle{same} % disable monospaced font for URLs
+%\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\scriptsize}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=0.6\maxwidth,height=0.6\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{h!}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\renewcommand{\baselinestretch}{1.2}
+
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\hypersetup{colorlinks, breaklinks,
+	linkcolor=coolblack,
+	filecolor=[rgb]{0.19, 0.55, 0.91},      
+	urlcolor=[rgb]{0.19, 0.55, 0.91},
+	anchorcolor=[rgb]{0.19, 0.55, 0.91},
+	citecolor=black}
+
+\newcommand{\indep}{\perp \!\!\! \perp}
+\newcommand{\nindep}{\not\!\perp\!\!\!\perp}
+
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{assump}[thm]{Assumption}
+
+\newtheorem*{cor}{Corollary}
+
+\theoremstyle{plain}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+
+
+
+
+
+\title{\Huge \textbf{Panel Econometrics} \\ \LARGE Notes}
+\author{\Large William Radaic Peron}
+\affil{\Large EESP-FGV}
+
+%\sectionfont{\fontsize{12}{12}\selectfont}
+%\chapterfont{\fontsize{16}{12}\selectfont}
+%\subsectionfont{\fontsize{11}{11}\selectfont}
+
+\begin{document}
+\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.6em}
+\maketitle
+
+\tableofcontents
+
+\chapter{Pooled OLS}
+
+\textbf{References:} AW, 7.7, 7.4.
+
+\section{Motivation}
+
+In this course, we'll study econometric models and estimators for \textit{panel} data.
+
+\begin{defn} 
+    A panel is a data set that combines cross-sectional observations of the same units (individuals) over multiple periods of time.
+\end{defn}
+
+Panel data can offer multiple solutions for common issues in Econometrics, such as omitted variable bias (OVB), sample restrictions, dynamics and simultaneity. However, the temporal structure of such data usually requires further considerations to yield consistent and efficient estimates.
+
+\section{Pooled Ordinary Least Squares Estimator}
+
+Suppose a linear model of the form: 
+\begin{equation}
+    y_t = \mathbf{x}_t \beta + u_t, \hspace{2em} t = 1,2,...,T
+\end{equation} 
+
+Although this seems to restrict $\beta$ to be fixed over time, varying parameters can be achieved through manipulations in the covariates (e.g., time dummies, trends).
+\begin{quote}
+    As a general rule, with large N and small T it is a good idea to allow for separate
+intercepts for each time period. Doing so allows for aggregate time effects that have
+the same influence on $y_{it}$ for all $i$. (AW, p. 192)
+\end{quote}
+
+The pooled OLS estimator is analogous to its cross-sectional counterpart, as will be now clear with its assumptions. 
+
+\subsection{Assumptions for identification}
+
+\begin{assump} \label{contemp_exog} \textbf{Contemporaneous exogeneity.}\footnote{Note that this assumption says nothing about the relationship between $x_t, u_t$ for $s \neq t$. (AW, p. 192).}
+$\mathbb{E}[\mathbf{x_t}'u_t] = 0, \forall t = 1, 2, ..., T.$ 
+\end{assump}
+
+\begin{assump} \label{full_rank} \textbf{Full rank.}
+    $rank[\sum_{i=1}^T \mathbb{E}(\mathbf{x_t'x_t})] = K$ for $k$ regressors.
+\end{assump}
+
+
+\subsection{Assumptions for inference}
+
+A further assumption may be imposed for efficiency:
+\begin{assump} \label{homosk} \textbf{Homoskedasticity.}
+    \begin{itemize}
+        \item $\mathbb{E}(u_t^2 \mathbf{x_t}'x_t) = \sigma^2 \mathbb{E}(\mathbf{x_t'x_t}), t = 1,2,...,T.$
+        \item $\sigma^2 = \mathbb{E}(u_t^2), \forall t.$
+        \item $\mathbb{E}(u_t u_s \mathbf{x_t'x_s}) = 0, t \neq s, (t,s) = 1,2,...,T.$
+    \end{itemize}
+\end{assump}
+
+Intuitively, homoskedasticity means that the conditional variance does not depend on $\mathbf{x_t}$ and that the unconditional variance is time-invariant. This is important because it 
+\begin{quote}
+\textit{essentially restricts the conditional covariances of the errors across different time periods to be zero.} the errors across different time periods to be zero. In fact, since $\mathbf{x}_{t}$ almost always contains a constant, POLS.3b [] requires at a minimum that $\mathbb{E}\left(u_{t} u_{s}\right)=0, t \neq s$. Sufficient for $\mathrm{POLS.} 3\mathrm{~b}$ [$\mathbb{E}(u_t u_s \mathbf{x_t'x_s}) = 0, t \neq s$] is $\mathbb{E}\left(u_{t} u_{s} \mid \mathbf{x_{t}, x_{s}}\right)=0, t \neq s, t, s=1, \ldots, T$ (AW, p. 193)
+\end{quote}
+
+\section{Asymptotics}
+
+
+\begin{thm} \textbf{Large-sample properties of Pooled OLS.} \label{asymp_pols}
+    Under assumptions \ref{contemp_exog} (contemporaneous exogeneity) and \ref{full_rank} (full rank), 
+    $ \hat{\beta}_{pOLS} \sim_A \mathcal{N}(\cdot). $ If \ref{homosk} (homoskedasticity) also holds, then $Avar(\hat{\beta}_{pOLS}) = \sigma^2[\mathbb{E}(\mathbf{X_i'X_i})]^{-1}/N. $ This implies that an appropriate estimator for $Avar(\hat{\beta}_{pOLS})$ is $\hat{\sigma}^2(\mathbf{X'X})^{-1}$, where $\hat{\sigma}^2$ is the usual (pooled) OLS variance estimator. 
+
+\end{thm}
+
+\section{Dynamic Completeness}
+
+\subsection{Lags}
+
+When the model has dynamics, it is important to ensure that $\mathbb{E}(u_t u_s \mathbf{x_t'x_s}) = 0, t \neq s$ holds and that the model completely captures this aspect. Dynamic completeness can be stated as: 
+\begin{equation}
+    \mathbb{E}(y_t | \mathbf{x_t}, y_{t-1}, ..., y_1, \mathbf{x_1}) = \mathbb{E}(y_t | x_t)
+\end{equation}
+In other words, the regressors (including lags of $x$ and $y$) completely capture the dynamics of the model. 
+
+Note that this is equivalent to\footnote{If the expectation conditional on $X$ is equivalent to the conditional expectation given $y$, then the model is correctly specified.}: 
+\begin{equation}
+    \mathbb{E}(u_t | \mathbf{x_t}, u_{t-1}, \mathbf{x_{t-1}}, ..., u_1, \mathbf{x_1}) = 0 \label{dyn_complete}
+\end{equation}
+Iterated expectations further implies that $\mathbb{E}(u_t u_s | \mathbf{x_t, x_s}) = 0, s \neq t$. This means that dynamic completeness \textit{implies contemporary exogeneity} (\ref{contemp_exog}) \textit{and no nonzero error autocorrelations.}
+
+\begin{quote}
+    Often, once we start putting any lagged values of $y_t$ into $\mathbf{x_t}$, then equation \ref{dyn_complete} is an intended assumption. But this generalization is not always true. [...] We
+    may not care that serial correlation is still present in the error [...] [and] estimate the asymptotic variance of the pooled OLS estimator
+    to be robust to serial correlation.
+
+    In introductory econometrics, students are often warned that having serial correlation in a model with a lagged dependent variable causes the OLS estimators to be
+    inconsistent. \textit{While this statement is true in the context of a specific model of serial
+    correlation, it is not true in general, and therefore it is very misleading.} Our
+    analysis shows that, whatever is included in $\mathbf{x_t}$, pooled OLS provides consistent estimators of b whenever $\mathbb{E}(y_t | \mathbf{X_t}) = \mathbf{x_t} \beta$; it does not matter that the $u_t$ might be
+    serially correlated. (AW, p. 196)
+\end{quote}
+
+\subsection{Persistence}
+
+Also note that the asymptotic properties of the pooled OLS estimator, \ref{asymp_pols}, do not impose restrictions on \textit{time series persistence.} That is the case because our asymptotics refer to \textit{fixed $T$, large $N$.} If $T$ grows, we enter time series analysis, which requires further knowledge of the temporal dependence of the data -- together with some assumptions, such as weak dependence\footnote{Weakly dependent processes are commonly, if somewhat misleadingly,
+referred to as ‘‘stationary’’ processes. (AW, p. 322)}. 
+
+If the processes $\{y_t, x_t\}$ are autoregressive in some way,
+\begin{equation}
+    y_t = \mu + \theta y_{t-1} + u_t, \hspace{2em} \mathbb{E}(u_t | y_{t-1},..., y_0) = 0
+\end{equation}
+
+dynamic completeness (\ref{dyn_complete}) ensures consistency for fixed $T$, large $N$. However, as $T \to \infty$, it is necessary to assume $|\theta| < 1$ as a stability condition. 
+
+\section{Robust inference}
+
+\subsection{Asymptotic variance estimator}
+
+Because homoskedasticity (\ref{homosk}) is too restrictive, we can obtain a roubst estimate of the asymptotic variance of $\hat{\beta}_{pOLS}.$ The fully robust -- to arbitrary heteroskedasticity and serial correlation -- $\widehat{Avar(\hat{\beta}_{pOLS})}$ can be stated as: 
+\begin{equation}
+    \operatorname{Avar}(\hat{\boldsymbol{\beta}})=\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \mathbf{X}_{i}\right)^{-1}\left(\sum_{i=1}^{N} \sum_{t=1}^{T} \sum_{s=1}^{T} \hat{u}_{i t} \hat{u}_{i s} \mathbf{x}_{i t}^{\prime} \mathbf{x}_{i s}\right)\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \mathbf{X}_{i}\right)^{-1}
+\end{equation}
+
+\subsection{Testing for serial correlation and heteroskedasticity}
+
+Serial correlation should not be present in the model if it is dynamically complete. To test for that, we can just model the error as an AR(1) process:
+$$ u_t = \rho_1 u_{t-1} + e_t, $$
+and test for the null of no serial correlation -- i.e., $\rho_1 = 0$. This can be done by regressing $y_{it}$ on $\mathbf{x_{it}, \hat{u}_{i,t-1}}$ and doing a standard $t-$test of $\hat{\rho}_1$. 
+
+The advantage of this approach compared to regressing $\mathbf{\hat{u}_{i,t}}$ on $\mathbf{\hat{u}_{i,t-1}}$ is that the above works regardless of strict exogeneity. 
+
+Heteroskedasticity can be tested as in the standard OLS framework. For example, regress $\mathbf{\hat{u}_{it}^2}$ on $1, \mathbf{h_{it}}$, where $\mathbf{h_{it}}$ is a vector of nonconstant functions of $\mathbf{x_{it}}$. The test statistic is $NTR_c^2$ of such regression, which is asymptotically $\chi_Q^2$ under the null. $\mathbf{h_{it}}$ usually includes $\mathbf{x_{it}}$, its squares and cross products.
+
+\section{Feasible GLS}
+
+When we don't have homoskedasticity, it seems reasonable to estimate the model with a FGLS approach. However, this procedure
+\begin{quote}
+    is not even guaranteed to produce consistent, let alone efficient, estimators under Assumptions \ref{contemp_exog} (contemporaneous exogeneity) and \ref{full_rank} (full rank).
+\end{quote}
+Unless $\Omega = \mathbb{E}(\mathbf{u_tu_t'})$ is diagonal, FGLS only produces consistent estimators with strict exogeneity. 
+
+In other words, FGLS is an option if $\mathbb{E}(u_t u_s \mathbf{x_t'x_s}) = 0, t \neq s$ does not hold -- i.e., if the model presents correlation between errors and regressors across time.\footnote{Note that $\mathbb{E}(u_t u_s \mathbf{x_t'x_s}) = 0, t \neq s$ is a less restrictive form of dynamic completeness, since it only refers to linear dependence.}
+
+\subsection{Consistency and asymptotic normality}
+
+(F)GLS is consistent under fairly weak assumptions. However, strict exogeneity is required. It is now presented in Kronecker product form.
+
+\begin{assump}
+    \textbf{Strict exogeneity.} \label{strict_kron} $\mathbb{E}(\mathbf{X_i} \otimes \mathbf{u_i}) = \mathbf{0}.$
+\end{assump}
+
+A sufficient condition for \ref{strict_kron} is the usual $\mathbb{E}(\mathbf{u_i}|\mathbf{x_i}) = 0, \forall i$. 
+
+Now, define $\Omega := \mathbb{\mathbb{E}(\mathbf{u_i u_i'})}$ as the unconditional variance-covariance matrix of $\mathbf{u_i}$. Under \ref{strict_kron}, it can be stated that the (F)GLS estimator is consistent -- i.e., the following condition holds:
+\begin{equation}
+    \mathbb{E}(\mathbf{X_i' \Omega^{-1} X_i}) = 0.
+\end{equation}
+
+This motivates the following assumption: 
+\begin{assump}
+    \textbf{Positive definite matrix.} \label{positive_definite} $\Omega$ is positive definite and $\mathbb{E}(\mathbf{X_i' \Omega^{-1} X_i})$ is nonsingular. 
+\end{assump}
+
+\begin{quote}
+The usual motivation for the GLS estimator is to transform a system of equations
+where the error has a nonscalar variance-covariance matrix into a system where the
+error vector has a scalar variance-covariance matrix. (AW, p. 174)
+\end{quote}
+
+Multiplying the model by $\Omega^{-1/2}$ transforms the variance-covariance matrix to a scalar.
+
+\begin{equation}
+    \boldsymbol{\Omega}^{-1 / 2} \mathbf{y}_{i}=\left(\boldsymbol{\Omega}^{-1 / 2} \mathbf{X}_{i}\right) \boldsymbol{\beta}+\boldsymbol{\Omega}^{-1 / 2} \mathbf{u}_{i}, \quad \text { or } \quad \mathbf{y}_{i}^{*}=\mathbf{X}_{i}^{*} \boldsymbol{\beta}+\mathbf{u}_{i}^{*}
+\end{equation}
+
+Then, the GLS estimator, denoted by $\beta^*$, is,
+\begin{equation}
+    \boldsymbol{\beta}^{*} := \left(\sum_{i=1}^{N} \mathbf{x}_{i}^{*} \mathbf{X}_{i}^{*}\right)^{-1}\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{*} \mathbf{y}_{i}^{*}\right)=\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{X}_{i}\right)^{-1}\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{y}_{i}\right),
+    \end{equation}
+which is consistent with the above assumptions (strict exogeneity and matrix conditions).
+We now define $\mathbf{A} := \mathbb{E}\left(\mathbf{X}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{X}_{i}\right)$, $\mathbf{A}$ is nonsingular.
+
+(W)LLN yields:
+\begin{equation}
+    \boldsymbol{\beta}^{*}=\boldsymbol{\beta}+\left(N^{-1} \sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{X}_{i}\right)^{-1}\left(N^{-1} \sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{u}_{i}\right) = \beta, \, \, \mathrm{as} \, \, N \to \infty.
+\end{equation}
+The first part of the second expression converges asymptotically to $\mathbf{A}$, and the second part converges to zero.
+
+GLS has an asymptotically normal distribution. 
+\begin{equation}
+    \sqrt{N}\left(\boldsymbol{\beta}^{*}-\boldsymbol{\beta}\right)=\left(N^{-1} \sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \boldsymbol{\Omega}^{-1} \mathbf{X}_{i}\right)^{-1}\left(N^{-1 / 2} \sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \boldsymbol{\Omega}^{-1} \mathbf{u}_{i}\right)
+\end{equation}
+CLT ensures that $\left(N^{-1 / 2} \sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \boldsymbol{\Omega}^{-1} \mathbf{u}_{i}\right) \sim_A \mathcal{N}(\mathbf{0,B}), \mathbf{B} := \mathbb{E}\left(\mathbf{X}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{u}_{i} \mathbf{u}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{X}_{i}\right)$.
+
+Then, 
+\begin{equation}
+\sqrt{N}\left(\boldsymbol{\beta}^{*}-\boldsymbol{\beta}\right) {\sim}_A \mathcal{N}\left(\mathbf{0}, \mathbf{A}^{-1} \mathbf{B} \mathbf{A}^{-1}\right),
+\end{equation}
+and $Avar(\hat{\boldsymbol{\beta}})=\mathbf{A}^{-1} \mathbf{B} \mathbf{A}^{-1} / N$.
+
+The \textit{feasible} GLS estimator has the same properties under analogous assumptions, substituting $\Omega$ by $\widehat{\Omega}$, estimated in the first step by pooled OLS.
+
+
+
+
+
+
+
+
+
+
+\chapter{Fixed Effects Estimator}
+
+\textbf{References:} AP, 5.1; D, 14.1, 14.2, AW, 10.1-10.3.
+
+Panel data allows us to address for OVB in multiple clever ways. Fixed effects is the most powerful of them.
+
+\section{Unobserved effect}
+
+Formally, define $c$ as an unobserved random variable in our model that contains variables $y$ and $\mathbf{x}$. If $c$ is completely exogenous to the covariates, then it is just another unobserved factor that affects $y$ not systematically -- and can be included in the general error term without much concern, since it doesn't cause bias. However, if $Cov(c,x_j) \neq 0$ for some $j$, then leaving $c$ in the error term can obviously yield biased estimates. 
+
+We can correct for this in a number of already known ways: for example, with proxies or instrumental variables. With panel data, we have a possibly much better way.
+
+\begin{assump}
+    \textbf{Unobserved effect.} \label{unobserved_effect} $c$ is time-invariant for each observation, and is denoted by $c_i$.
+\end{assump}
+
+From this, we can write our unobserved effects model (UEM) as:
+\begin{equation}
+    y_{it} = \mathbf{x_{it}\beta} + c_i + u_{it}, \hspace{2em} t = 1,2,...,T.
+\end{equation}
+where $c_i$ is individual heterogeneity and $u_{it}$ are idiosyncratic disturbances. 
+
+The assumptions we impose on the unobserved effect $c_i$ is what distinguish the fixed and random effects estimators. In simple terms, the \textit{random effects framework} is synonymous with $Cov(x_{it}, c_i) = 0, \forall t$, and in the \textit{fixed effects framework} we allow for correlation between the unobserved effect $c_i$ and the covariates.\footnote{Note that $c_i$ is \textit{always} treated as a random variable.}
+
+With models that contain unobserved effects, we always impose strict exogeneity.
+
+\begin{assump}
+    \textbf{Strict exogeneity for unobserved effects.} \label{strict_exog_c} $$
+    \mathbb{E}\left(y_{i t} \mid \mathbf{x}_{i 1}, \mathbf{x}_{i 2}, \ldots, \mathbf{x}_{i T}, c_{i}\right)=\mathbb{E}\left(y_{i t} \mid \mathbf{x}_{i t}, c_{i}\right)=\mathbf{x}_{i t} \boldsymbol{\beta}+c_{i}.
+    $$
+\end{assump}
+
+The main difference between FE and RE frameworks is the exogeneity of the unobserved effects \textit{conditional on the regressors}. FE allows for correlation, while RE does not. 
+
+As usual, we also impose a full rank assumption -- which will restrain in a number of important ways our FE estimates.
+
+\begin{assump} \label{full_rank_c} \textbf{Full rank for unobserved effects.}
+    $rank[\sum_{i=1}^T \mathbb{E}(\mathbf{x_t'x_t})] = K$ for $k$ regressors.
+\end{assump}
+
+\begin{quote}
+     in any panel data application we should initially focus on two questions: (1) Is the unobserved effect, $c_i$, uncorrelated with $x_{it}$ for all $t$? (2) Is the strict exogeneity assumption (conditional on
+$c_i$) reasonable? (AW, p. 289)
+\end{quote}
+
+
+\section{Pooled OLS with unobserved effects}
+
+There's a way to obtain consistent pooled OLS estimates even with unobserved effects. Consider the model
+\begin{equation}
+    y_{i t}=\mathbf{x}_{i t} \boldsymbol{\beta}+v_{i t}, \quad t=1,2, \ldots, T, \hspace{2em} v_{it} := c_i + u_{it}, \forall t
+\end{equation}
+
+Our error term is now \textit{composite}, and encompasses (i) unobserved time-invariant individual effects; and (ii) idiosyncratic disturbances.
+
+Pooled OLS will be consistent if
+\begin{equation}
+    \mathbb{E}(\mathbf{x_{it}'}v_{it}) = 0, \forall t,
+\end{equation}
+which means that we are assuming both $\mathbb{E}(\mathbf{x_{it}'}u_{it}) = 0$ and $\mathbb{E}(\mathbf{x_{it}'}c_{i}) = 0$. The second assumption is more restrictive, which requires that the model be correctly specified for strict exogeneity.
+
+
+\section{Fixed effects with dummies}
+
+We now consider the case when $c_i$ is potentially correlated with $X_{it}$. One possible first approach is to treat the unobserved individual effects as \textit{parameters} to be estimated. Since Frisch-Waugh-Lovell ensures that adding variables to the regression partials out its effects, by including individual dummies we can essentially remove $c_i$ from the error term and avoid inconsistency.
+
+Consider the model
+\begin{equation}
+    y_{i t}=\mathbf{x}_{i t} + 
+   % \sum_{i=1}^N 
+    c_i D_i + u_{it}, \quad t = 1,2,..., T,
+\end{equation}
+where $D_i$ is a dummy variable for observation $i$.
+
+It is worth noting that, as $N \to \infty$, while $\hat{\beta} \to \beta$, the same isn't true for $c_i$. That happens because $c_i$ grows at the same rate as $N$, which implies that the number of observations for each unobserved effect stays constant. 
+\begin{quote}
+    Each $\hat{c}_i$ is an unbiased estimator of $c_i$ when the $c_i$ are treated as parameters, at least if we maintain [exogeneity conditional on $c_i, x_i$] and [full rank]. [...] The $\hat{c}_i$ give practical examples of estimators that are unbiased but not consistent. 
+\end{quote}
+
+Note that, in OLS regression, $\hat{c}_i$ can be estimated by:
+\begin{equation}
+    \hat{c}_i = \bar{y_i} - \bar{\mathbf{x_i}}\hat{\mathbf{\beta}}_{FE}, \quad i = 1,2,..., N.
+\end{equation}
+
+This makes sense because $\hat{c}_i$ is effectively the intercept for cross section unit $i$. It is, thus, sometimes useful to estimate and plot $\hat{c}_i$ and its moments (mean, median, quantiles) to get a sense of the heterogeneity of the sample. 
+
+We can consistently estimate $\sigma^2_c$ (variance of unobserved effects) if we assume that the error process, $\{u_{it}\}$ is serially uncorrelated with constant variance. First, it is possible to estimate $\sigma_v^2 = \sigma_c^2 + \sigma_u^2$. Since $v_{it} = y_{it} - x_{it}\beta$,
+\begin{equation}
+    \hat{\sigma}_{v}^{2}=(N T-K)^{-1} \sum_{i=1}^{N} \sum_{t=1}^{T}\left(y_{i t}-\mathbf{x}_{i t} \hat{\boldsymbol{\beta}}_{F E}\right)^{2}
+    \end{equation}
+is an asymptotically consistent estimator for $\sigma_v^2$. Rewriting $\hat{\sigma}^2_c = \hat{\sigma}^2_v - \hat{\sigma}^2_u$ yields the sample variance of $c_i$. $\hat{\sigma}^2_u$ is calculated with
+\begin{equation}
+    \hat{\sigma}_{u}^{2}=\dfrac{\operatorname{SSR}}{[N(T-1)-K]}
+\end{equation}
+
+Note that $\hat{\sigma}_{v}^{2}$ correctly corrects for the number of degrees of freedom in the model, as $K$ includes $N$ dummies. This is not given in within (FE) or first difference (FD) approaches, and requires correction, as will be shown.
+
+The dummy variable approach makes a point very clear in regards to the fixed effects framework: regressors that are time-invariant to all observations, such as age, race etc., \textit{cannot be included in the model.} In the dummy approach, it effectively yields \textit{multicolinearity,} as we're controlling twice for some time-invariant individual characteristics in this case.
+
+
+\section{Within (FE) estimator}
+
+We can achieve the same result of eliminating the unobserved effects $c_i$ with a transformation. 
+
+\subsection{Transformation}
+
+Consider the model
+\begin{equation}
+    \label{fe1}
+    y_{i t}=\mathbf{x}_{i t} \boldsymbol{\beta}+c_{i}+u_{i t}, \quad t=1, \ldots, T
+\end{equation}
+
+Compute averages for all processes \textit{over time, for each observation}:
+\begin{equation}
+    \label{avg_within}
+    \bar{y}_{i}=\overline{\mathbf{x}}_{i} \boldsymbol{\beta}+c_{i}+\bar{u}_{i}
+\end{equation}
+
+Now, subtract \ref{avg_within} from \ref{fe1}:
+\begin{equation}
+    y_{i t}-\bar{y}_{i}=\left(\mathbf{x}_{i t}-\overline{\mathbf{x}}_{i}\right) \boldsymbol{\beta}+u_{i t}-\bar{u}_{i}
+\end{equation}
+
+From this, we redefine the variables as:
+\begin{equation}
+    \ddot{y}_{i t} := y_{i t}-\bar{y}_{i}, \ddot{\mathbf{x}}_{i t} := \mathbf{x}_{i t}-\overline{\mathbf{x}}_{i}, \text { and } \ddot{u}_{i t} := u_{i t}-\bar{u}_{i}
+    \end{equation}
+
+The \textit{within} transformation then yields:
+\begin{equation}
+    \label{within}
+    \ddot{y}_{i t}=\ddot{\mathbf{x}}_{i t} \boldsymbol{\beta}+\ddot{u}_{i t}, \quad t=1,2, \ldots, T
+\end{equation}
+
+Note that time demeaning for each individual purges the unobserved effect, $c_i$, from the model. 
+
+\subsection{Consistency}
+
+As per usual, we need assumptions for consistency.
+
+\begin{assump}
+    \textbf{Strict exogeneity for FE.} $\mathbb{E}(u_{it} | \mathbf{x_i},c_i) = 0, \quad t = 1,2,...,T.$ \label{strict_exog_fe}
+\end{assump}
+
+\begin{assump}
+    \textbf{Full rank for FE.} $rank\left(\sum_{t=1}^{T} \mathbb{E}\left(\ddot{\mathbf{x}}_{i t}^{\prime} \ddot{\mathbf{x}}_{i t}\right)\right)=rank\left[\mathbb{E}\left(\ddot{\mathbf{X}}_{i}^{\prime} \ddot{\mathbf{X}}_{i}\right)\right]=K.$ \label{full_rank_fe}
+\end{assump}
+
+
+It follows, then, that estimating this equation can be done with pooled OLS. More formally, it is necessary that $\mathbb{E}(\ddot{x}_{it}'\ddot{u}_{it}) = 0, \forall t$ (strict exogeneity) holds. 
+
+Strict exogeneity is required because time demeaning implies that every observation for a unit will include a fraction of observations in other periods. If there's only contemporaneous exogeneity (\ref{contemp_exog}), for example, then the possible cross correlations will cause bias.\footnote{More info on AW, p. 303.}
+
+Again, it is worth pointing out that the full rank condition (\ref{full_rank_fe}) rules out time-constant variables as regressors. The within transformation will remove, aside from $c_i$, all of these variables (as time demeaning them will be equal to every observation). This implies that $\mathbb{E}(\ddot{x}_{it}'\ddot{u}_{it})$ will be a matrix with columns equal to vectors of zeroes -- which violates full rank, as this means linear dependence for columns. 
+
+Considering all of these remarks, then, the \textit{within estimator} is given by
+\begin{equation}
+    \hat{\boldsymbol{\beta}}_{F E}=\left(\sum_{i=1}^{N} \ddot{\mathbf{x}}_{i}^{\prime} \mathbf{X}_{i}\right)^{-1}\left(\sum_{i=1}^{N} \ddot{\mathbf{x}}_{i}^{\prime} \mathbf{y}_{i}\right)=\left(\sum_{i=1}^{N} \sum_{t=1}^{T} \ddot{\mathbf{x}}_{i i}^{\prime} \mathbf{x}_{i t}\right)^{-1}\left(\sum_{i=1}^{N} \sum_{t=1}^{T} \ddot{\mathbf{x}}_{i t}^{\prime} \ddot{y}_{i t}\right). \label{fe_estimator}
+\end{equation}
+
+
+\subsection{Inference}
+
+Initially, we'll consider the usual condition for efficiency, i.e., homoskedasticity.
+
+\begin{assump} \textbf{Homoskedasticity for FE.}
+   $ \mathbb{E}(\mathbf{u_i u_i' | x_i}, c_i) = \sigma_u^2 \mathbf{I}_T.$ \label{homosk_fe}
+\end{assump}
+
+Along with strict exogeneity (\ref{strict_exog_fe}), this means that the unconditional variance matrix can be decompose as $v_i = c_i j_T + u_i$, where $j_T$ is a matrix of individual dummies.\footnote{This is analogous to the RE vcov matrix.} However, the conditional variance is different.
+
+Efficiency isn't trivial with this assumption, because it is necessary that $\{\ddot{u}_{it}\}$ exhibits no serial correlation and is homoskedastic. The variance of $\ddot{u}_{it}$ can be computed as:
+\begin{equation}
+    \begin{aligned}
+    \mathbb{E}\left(\ddot{u}_{i t}^{2}\right) &=\mathbb{E}\left[\left(u_{i t}-\bar{u}_{i}\right)^{2}\right]=\mathbb{E}\left(u_{i t}^{2}\right)+\mathbb{E}\left(\bar{u}_{i}^{2}\right)-2 \mathbb{E}\left(u_{i t} \bar{u}_{i}\right) \\
+    &=\sigma_{u}^{2}+\sigma_{u}^{2} / T-2 \sigma_{u}^{2} / T=\sigma_{u}^{2}(1-1 / T),
+    \end{aligned}
+    \end{equation}
+which demonstrates homoskedasticity. However, for $t \neq s$, we have: 
+\begin{equation}
+    \begin{aligned}
+    \mathbb{E}\left(\ddot{u}_{i t} \ddot{u}_{i s}\right) &=\mathbb{E}\left[\left(u_{i t}-\bar{u}_{i}\right)\left(u_{i s}-\bar{u}_{i}\right)\right]=\mathbb{E}\left(u_{i t} u_{i s}\right)-\mathbb{E}\left(u_{i t} \bar{u}_{i}\right)-\mathbb{E}\left(u_{i s} \bar{u}_{i}\right)+\mathbb{E}\left(\bar{u}_{i}^{2}\right) \\
+    &=0-\sigma_{u}^{2} / T-\sigma_{u}^{2} / T+\sigma_{u}^{2} / T=-\sigma_{u}^{2} / T<0,
+    \end{aligned}
+    \end{equation}
+which clearly \textit{shows negative autocorrelation} for the process $\{\ddot{u}_{it}\}$. Combining both results, we have
+\begin{equation}
+    \operatorname{Corr}\left(\ddot{u}_{i t}, \ddot{u}_{i s}\right)=-1 /(T-1),
+\end{equation}
+which converges to zero asymptotically. 
+
+To find the asymptotic distribution of the FE estimator, write
+\begin{equation}
+    \sqrt{N}\left(\hat{\boldsymbol{\beta}}_{F E}-\boldsymbol{\beta}\right)=\left(N^{-1} \sum_{i=1}^{N} \ddot{\mathbf{X}}_{i}^{\prime} \ddot{\mathbf{X}}_{i}\right)^{-1}\left(N^{-1 / 2} \sum_{i=1}^{N} \ddot{\mathbf{X}}_{i}^{\prime} \mathbf{u}_{i}\right)
+\end{equation}
+where we have used the important fact that $\ddot{\mathbf{X}}_{i}^{\prime} \mathbf{u}_{i}=\mathbf{X}_{i}^{\prime} \mathbf{Q}_{T} \mathbf{u}_{i}=\mathbf{X}_{i}^{\prime} \mathbf{u}_{i}$.\footnote{$\mathbf{Q_T}$ is idempotent and symmetric.} (AW, p. 305)
+
+It follows, then, that
+\begin{equation}
+    \sqrt{N}\left(\hat{\boldsymbol{\beta}}_{F E}-\boldsymbol{\beta}\right) \sim_A \mathcal{N}\left(\mathbf{0}, \sigma_{u}^{2}\left[\mathbb{E}\left(\ddot{\mathbf{X}}_{i}^{\prime} \ddot{\mathbf{X}}_{i}\right)\right]^{-1}\right)
+\end{equation}
+and
+\begin{equation}
+Avar\left(\hat{\boldsymbol{\beta}}_{F E}\right)=\sigma_{u}^{2}\left[\mathbb{E}\left(\ddot{\mathbf{X}}_{i}^{\prime} \ddot{\mathbf{X}}_{i}\right)\right]^{-1} / N
+\end{equation}
+
+This can be easily estimated with its sample analogue,
+\begin{equation}
+    \operatorname{Avar}\left(\hat{\boldsymbol{\beta}}_{F E}\right)=\hat{\sigma}_{u}^{2}\left(\sum_{i=1}^{N} \ddot{\mathbf{X}}_{i}^{\prime} \ddot{\mathbf{X}}_{i}\right)^{-1}=\hat{\sigma}_{u}^{2}\left(\sum_{i=1}^{N} \sum_{t=1}^{T} \ddot{\mathbf{x}}_{i t}^{\prime} \ddot{\mathbf{x}}_{i t}\right)^{-1}
+\end{equation}
+The asymptotic standard errors of the FE estimates are obtained as the square roots
+of the diagonal elements of the [above] matrix (AW, p. 306)
+
+There's one subtlety with FE inference, notably regarding the degrees of freedom correction for sample variance. To see this, note that 
+\begin{equation}
+    \sum_{i=1}^T \mathbb{E}(\ddot{u}_it^2) = (T-1) \sigma_u^2 \implies [N(T-1)]^{-1} \sum_{i=1}^{N} \sum_{t=1}^{T} \mathbb{E}\left(\ddot{u}_{i t}^{2}\right)=\sigma_{u}^{2},
+\end{equation}
+where the implication follows from summing over all individuals to yield the general variance for $u$.
+
+The FE residuals can be written as
+$$\hat{\boldsymbol{u}}_{i t}=\ddot{y}_{i t}-\ddot{\mathbf{x}}_{i t} \hat{\boldsymbol{\beta}}_{F E}, \quad t=1,2, \ldots, T ; i=1,2, \ldots, N.$$
+Then, a consistent estimator for $\sigma_u^2$ is
+\begin{equation}
+    \hat{\sigma}_{u}^{2}=\dfrac{\operatorname{SSR}}{[N(T-1)-K]},
+    \end{equation}
+where $SST$ is the total sum of squared residuals \textit{for the (within) transformed residuals.} Note that there's a correction for $N$ degrees of freedom -- i.e., for the number of unobserved effects removed from the model with the within transformation. In the dummy framework, this is not necessary, as the dummies imply that $K$ actually encompasses all individual unobserved effects as parameters. 
+
+
+
+\section{First difference (FD) estimator}
+
+Another possible transformation to remove the unobserved effects $c_i$ from the model is \textit{taking first differences} for all variables.
+
+
+
+Lagging the usual model yields:
+\begin{equation}
+    \Delta y_{i t}=\Delta \mathbf{x}_{i t} \boldsymbol{\beta}+\Delta u_{i t}, \quad t=2,3, \ldots, T
+\end{equation}
+
+The FD estimator is, then, the pooled OLS regresion of 
+$$\Delta y_{it} \, \, \mathrm{on} \, \, \Delta\mathbf{x_{it}}, \quad t=2,3, \ldots, T, \quad i = 1,2,\ldots, N.$$
+
+Note that we now have $T-1$ periods, because we taking first differences implies losing the first period. 
+\begin{quote}
+Di¤erences for observation numbers $1, T + 1, 2T + 1;
+3T + 1,..., and (N-1)T+1$ should be set to missing. These observations correspond to the first time period for every cross section unit in the original data set; by
+definition, there is no first difference for the $t = 1$ observations.
+\end{quote}
+
+The FD transformation makes it clear, again, that all regressors \textit{must be time-varying}. If an $x_j$ is constant for all $t$, then $\Delta x_j$ is zero and must be removed from the model. 
+
+\subsection{Consistency}
+
+\begin{assump}
+    \textbf{Strict exogeneity for FD.} $\mathbb{E}(u_{it} | \mathbf{x_i},c_i) = 0, \quad t = 1,2,...,T.$ \label{strict_exog_fd}
+\end{assump}
+
+
+\begin{assump}
+    \textbf{Full rank for FD.} $\operatorname{rank}\left(\sum_{t=2}^{T} \mathbb{E}\left(\Delta \mathbf{x}_{i t}^{\prime} \Delta \mathbf{x}_{i t}\right)\right)=K$ \label{full_rank_fd}
+\end{assump}
+
+Strict exogeneity here (\ref{strict_exog_fd}) implies not only that FD is consistent:
+\begin{equation}
+    \mathbb{E}(\Delta u_{it}' {\Delta x_{it}}) = 0, \quad t = 2,3,...,T.
+\end{equation}
+but also \textit{unbiased}, because the following condition holds:
+\begin{equation}
+    \mathbb{E}\left(\Delta u_{i t} \mid \Delta \mathbf{x}_{i 2}, \Delta \mathbf{x}_{i 3}, \ldots, \Delta \mathbf{x}_{i T}\right)=0, \quad t=2,3, \ldots, T.
+\end{equation}
+
+
+
+\subsection{Inference}
+
+The key aspect of FD when compared to FE is that it is not \textit{efficient.} The FE estimator assumes (i) homoskedasticity (\ref{homosk_fe}); and (ii) \textit{no serial correlation} for $\{u_{it}\}$. Assuming that $\{u_{it}\}$ is serially uncorrelated may be too strong, and a possible alternative is assuming that $\{\Delta u_{it}\}$ is serially uncorrelated. 
+
+\begin{assump} \textbf{Homoskedasticity for FE.} \label{homosk_fd}
+    $$ \mathbb{E}\left(\mathbf{e}_{i} \mathbf{e}_{i}^{\prime} \mid \mathbf{x}_{i 1}, \ldots, \mathbf{x}_{i T}, c_{i}\right)=\sigma_{e}^{2} \mathbf{I}_{T-1},$$ 
+    where $\mathbf{e}_{i}$ is the $(T-1) \times 1$ vector containing $e_{i t}, t=2, \ldots, T,$ and ${e}_{it} := \Delta u_{it}$.
+ \end{assump}
+
+
+This assumption represents an extreme opposite from FE, since it implies that $\{u_{it}\}$ is a random walk, and has, therefore, substantial serial dependence. 
+
+Efficiency depends, then, on the serial correlation assumption that we take as being valid. If $\{u_{it}\}$ is assumed not to be serially correlated, then FE is efficient. FD is efficient if \ref{homosk_fd} holds, i.e., if $\{u_{it}\}$ is a random walk. 
+
+The assumption of no serial correlation of $\{e_{it}\}$ can be tested with a simple regression: 
+\begin{equation}
+    \hat{e}_{i t}=\hat{\rho}_{1} \hat{e}_{i, t-1}+\text {error}_{i t}, \quad t=3,4, \ldots, T ; i=1,2, \ldots, N,
+    \end{equation}
+where we compute the usual $t-$test for $\hat{\rho}_1$.
+
+Usually, though, that's not the case, and it implies the need for adjustments. 
+\begin{quote}
+    If the idiosyncratic errors $\left\{u_{i t}: t=1,2, \ldots, T\right\}$ are uncorrelated to begin with,
+    $\left\{e_{i t}: t=1,2, \ldots, T\right\}$ will be autocorrelated. In fact, under \ref{homosk_fe} (Homoskedasticity for FE) it is easily shown that $Corr(e_{it}, e_{it-1}) = -0.5$. (AW, p. 320)
+\end{quote}
+
+AP highlight this point: 
+\begin{quote}
+    the differenced stantard errors should be adjusted for the fact that the differenced residuals are serially correlated. (AP, p. 224)
+\end{quote}
+
+We now present a robust variance estimator for FD. 
+\begin{equation}
+    \operatorname{Avar}\left(\hat{\boldsymbol{\beta}}_{F D}\right)=\left(\Delta \mathbf{X}^{\prime} \Delta \mathbf{X}\right)^{-1}\left(\sum_{i=1}^{N} \Delta \mathbf{X}_{i}^{\prime} \hat{\mathbf{e}} \hat{\mathbf{e}}_{i}^{\prime} \Delta \mathbf{X}_{i}\right)\left(\Delta \mathbf{X}^{\prime} \Delta \mathbf{X}\right)^{-1}.
+\end{equation}
+
+
+
+\section{Clustering}
+
+It is possible that the observations come from different groups, with some form of dependence between them. In this case, since we don't have a random sample at the individual level, but instead at the group level, our standard errors will need corrections. That is the motivation behind clustering. 
+
+\subsection{Moulton factor}
+
+Consider the example from the STAR experiment (AP, 8.2):
+\begin{equation}
+    y_{ig} = \beta_0 + \beta_1 x_g + e_{ig}.
+\end{equation}
+Note that $x_g$ varies only at the group level $g$. It is possible that individuals in the same group exhibit some form of correlation:
+\begin{equation}
+    \mathbb{E}[e_{ig}e_{jg}] = \rho_e \sigma^2_e > 0.
+\end{equation}
+$\rho_e$ is the residual intraclass correlation, $\sigma^2_e$ is the residual variance. 
+
+We can assume that the error term is composed by:
+\begin{equation}
+    e_{ig} = v_g + \eta_{ig},
+\end{equation}
+that is, a group-specific term added to an idiosyncratic disturbance. 
+
+Given this structure, 
+\begin{equation}
+    \rho_e = \dfrac{\sigma_v^2}{\sigma_v^2 + \sigma_\eta^2}
+\end{equation}
+
+Let $V_c(\hat{\beta}_1)$ be the usual OLS variance, and $V(\hat{\beta}_1)$ be the correct variance given the error structure. We divide both terms, which yields:
+\begin{equation}
+    \dfrac{V\left(\hat{\beta}_{1}\right)}{V_{c}\left(\hat{\beta}_{1}\right)}=1+(n-1) \rho_{e},
+    \end{equation}
+where $n$ denotes the size of the groups and the regressors are fixed at the group level.
+
+Taking the square root of this expression yields the \textit{Moulton factor} for this special case.
+\begin{equation}
+    \sqrt{\dfrac{V\left(\hat{\beta}_{1}\right)}{V_{c}\left(\hat{\beta}_{1}\right)}}=\sqrt{1+(n-1) \rho_{e}}
+\end{equation}
+
+More generally, we allow the regressors $x_{ig}$ to vary at the individual level and for groups of different sizes. Then, the Moulton factor is the square root of:
+\begin{equation}
+    {\frac{V\left(\hat{\beta}_{1}\right)}{V_{c}\left(\hat{\beta}_{1}\right)}}={1+\left[\frac{V\left(n_{g}\right)}{\bar{n}}+\bar{n}-1\right] \rho_{x} \rho_{e}}, \label{moulton_correction}
+    \end{equation}
+where $\bar{n}$ is the average group size and $\rho_x$ is the intraclass correlation of $x_ig$:
+\begin{equation}
+    \rho_{x}=\frac{\sum_{g} \sum_{j} \sum_{i \neq j}\left(x_{i g}-\bar{x}\right)\left(x_{i g}-\bar{x}\right)}{V\left(x_{i g}\right) \sum_{g} n_{g}\left(n_{g}-1\right)} .
+\end{equation}
+
+\subsection{Clustering corrections}
+
+There are some possible solutions for the Moulton problem:
+\begin{enumerate}
+    \item \textbf{Parametric.} Fix conventional standard errors with \ref{moulton_correction} and the intraclass correlation coefficients.
+    \item \textbf{Clustered standard errors.}
+    \begin{equation}
+        \hat{\Omega}_{c l}=\left(X^{\prime} X\right)^{-1}\left(\sum_{g} X_{g} \hat{\Psi}_{g} X_{g}\right)\left(X^{\prime} X\right)^{-1}, 
+        \end{equation}
+     where
+     \begin{equation}
+            \begin{aligned}
+            \hat{\Psi}_{g} &=a \hat{e}_{g} \hat{e}_{g}^{\prime} \\
+            &=a\left[\begin{array}{cccc}
+            \hat{e}_{1 g}^{2} & \hat{e}_{1 g} \hat{e}_{2 g} & \cdots & \hat{e}_{1 g} \hat{e}_{n g} g \\
+            \hat{e}_{1 g} \hat{e}_{2 g} & \hat{e}_{2 g}^{2} & \cdots & \vdots \\
+            \vdots & \vdots & & \hat{e}_{n_{g}-1, g} \hat{e}_{n g} g \\
+            \hat{e}_{1 g} \hat{e}_{n_{g} g} & \cdots & \hat{e}_{n_{g}-1, g} \hat{e}_{n_{g} g} & \hat{e}_{n_{g} g}^{2}
+            \end{array}\right] .
+            \end{aligned}
+            \end{equation} 
+    $X_g$ is the matrix of regressors for group $g$ and $a$ is the degrees of freedom correction.
+
+    The more general ${\Omega}_{c l}$, then, is \textit{block-diagonal}:
+    \begin{equation}
+        \operatorname{Var}(e)=\left(\begin{array}{ccccc}
+        \Sigma_{1} & & & & 0 \\
+        & \ddots & & & \\
+        & & \Sigma_{g} & & \\
+        & & & \ddots & \\
+        0 & & & & \Sigma_{G}
+        \end{array}\right)\footnote{\href{http://fmwww.bc.edu/repec/usug2007/crse04.pdf}{http://fmwww.bc.edu/repec/usug2007/crse04.pdf}}
+        \end{equation}
+    \item \textbf{Use group averages.} Our new model is 
+    \begin{equation}
+        \bar{y_g} = \beta_0 + \beta_1 x_g + \bar{e}_g.
+    \end{equation}
+    \item \textbf{Block bootstrap.} This is basically resampling while maintaining the intraclass dependence structure.
+    \item \textbf{GLS or MLE.}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Measurement error}
+
+The fixed effects approach can be very susceptible to measurement error. This comes especially from variables that usually vary litte over time, such as marital status or institutions. Time variations observed for such variables can reflect mostly noise. However, since FE depends on these variations, be it through time demeaning or first differencing, this noise becomes substantial in the estimating procedures -- which leads to large attenuation biases.
+
+\begin{quote}
+    It is widely believed in econometrics that the
+    di¤erencing and FE transformations exacerbate measurement error bias (even though
+    they eliminate heterogeneity bias). However, it is important to know that this conclusion rests on the classical errors-in-variables (CEV) model under strict exogeneity,
+    as well as on other assumptions. (AW, p. 365)
+\end{quote}
+
+Consider the model
+\begin{equation}
+    y_{i t}=\beta x_{i t}^{*}+c_{i}+u_{i t}
+\end{equation}
+where we assume strict exogeneity
+\begin{equation}
+    \mathbb{E}\left(u_{i t} \mid \mathbf{x}_{i}^{*}, \mathbf{x}_{i}, c_{i}\right)=0, \quad t=1,2, \ldots, T.
+\end{equation}
+$x^*$ is the unobserved true variable, and $x$ is the observed variable. 
+The measurement error is defined as
+\begin{equation}
+    r_{it} = x_{it} - x_{it}^*
+\end{equation}
+We now assume that $r_{it}$ is uncorrelated with $x_{it}^*$ -- CEV. Then, the asymptotic results are: 
+\begin{equation}
+    \begin{aligned}
+    \operatorname{plim}_{N \rightarrow \infty} \hat{\beta}_{P O L S} &=\beta+\frac{\operatorname{Cov}\left(x_{i t}, c_{i}+u_{i t}-\beta r_{i t}\right)}{\operatorname{Var}\left(x_{i t}\right)} \\
+    &=\beta+\frac{\operatorname{Cov}\left(x_{i t}, c_{i}\right)-\beta \sigma_{r}^{2}}{\operatorname{Var}\left(x_{i t}\right)}
+    \end{aligned}
+    \end{equation}
+This shows that the pooled OLS estimator has two sources of bias: (i) unobserved effect $c_i$; (ii) measurement error (negative).
+\begin{quote}
+    If $x_{it}$ and $c_i$ are positively correlated and $\beta > 0$, the two sources of bias tend to cancel each other. (AW, p. 366)
+\end{quote}
+
+Consider an example with $T = 2$ and where CEV holds. If we take first differences,
+\begin{equation}
+    \begin{aligned}
+    \operatorname{plim}_{N \rightarrow \infty} \hat{\beta}_{F D} &=\beta+\frac{\operatorname{Cov}\left(\Delta x_{i t}, \Delta u_{i t}-\beta \Delta r_{i t}\right)}{\operatorname{Var}\left(\Delta x_{i t}\right)}=\beta-\beta \frac{\operatorname{Cov}\left(\Delta x_{i t}, \Delta r_{i t}\right)}{\operatorname{Var}\left(\Delta x_{i t}\right)} \\
+    &=\beta-2 \beta \frac{\left[\sigma_{r}^{2}-\operatorname{Cov}\left(r_{i t}, r_{i, t-1}\right)\right]}{\operatorname{Var}\left(\Delta x_{i t}\right)} \\
+    &=\beta\left(1-\frac{\sigma_{r}^{2}\left(1-\rho_{r}\right)}{\sigma_{x^{*}}^{2}\left(1-\rho_{x^{*}}\right)+\sigma_{r}^{2}\left(1-\rho_{r}\right)}\right)
+    \end{aligned}
+\end{equation}
+
+\begin{quote}
+    As the autocorrelation of $x_{it}^*$ increases relative to that in $r_{it}$, the measurement error bias in $\hat{\beta}_{FD}$ increases. In fact, as $\rho_{x^*} \to 1$, the measurement error bias approaches $-\beta$.  
+\end{quote}
+
+
+It is possible to achieve consistent estimates even under measurement error with some assumptions.
+
+\begin{equation}
+    y_{i t}=\mathbf{z}_{i t} \gamma+\delta w_{i t}^{*}+c_{i}+u_{i t}, \quad t=1,2, \ldots, T,
+\end{equation}
+where $w_{it}^*$ is measured with error, $r_{it} = w_{it} - w_{it}*$.
+
+The assumptions for consistency are:
+\begin{assump}
+    \textbf{Strict exogeneity for measurement error.} $$
+    \mathbf{E}\left(u_{i t} \mid \mathbf{z}_{i}, \mathbf{w}_{i}^{*}, \mathbf{w}_{i}, c_{i}\right)=0, \quad t=1,2, \ldots, T
+    $$
+\end{assump}
+
+\begin{assump}
+    \textbf{CEV.} 
+    $$\mathbb{E}\left(r_{i t} \mid \mathbf{z}_{i}, \mathbf{w}_{i}^{*}, c_{i}\right)=0, \quad t=1,2, \ldots, T$$
+\end{assump}
+
+Taking first differences yields:
+\begin{equation}
+    \Delta y_{i t}=\Delta \mathbf{z}_{i t} \gamma+\delta \Delta w_{i t}+\Delta u_{i t}-\delta \Delta r_{i t}
+    \end{equation}
+Now, CEV implies that $\Delta r_{it}$ is correlated with $\Delta w_{it}$. We need an instrument for $\Delta w_{it}$. A natural choice is another measure of $\Delta w_{it}^*$, $h_{it}$, whose measurement error is orthogonal to the measurement error in $w_{is}, \forall t, s$\footnote{More info on AW, 11.5.}.
+
+
+
+
+
+
+\chapter{Differences-in-Differences Estimator}
+
+Differences-in-Differences (DD) is another framework for data spanning multiple periods. Most importantly, it doesn't rely on \textit{panel} data, which requires observations for the same individuals over time. Often, it uses data at an aggregate level for its parameters of interest.
+\begin{quote}
+    DD is a version of fixed effects estimation using aggregate data. (AP, p. 228)
+\end{quote}
+
+
+
+
+
+\section{DD framework}
+DD will be presented with an example from Card and Krueger (1994) (AP, 5.2). 
+
+Let $y_{1ist}$ be fast food employment at restaurant $i$, state $s$ and time $t$ \textit{if there's a high state minimum vage} $(1)$; $y_{0ist}$ \textit{if there's a low state minimum vage} $(0)$. Therefore, $0$ or $1$ denote treatment status. 
+
+We'd ideally like to observe $y_{1ist}$ and $y_{0ist}$ for all states. However, that's obviously not possible, since the counterfactual for treated states won't be observed in these states. 
+
+The main assumption in DD is its additive effects structure.
+\begin{assump}
+    \textbf{Additive effects for DD.} $\mathbb{E}[y_{0ist}|s,t] = \gamma_s + \lambda_t,$
+    where $\gamma_s$ is a \textit{state-specific, time-invariant} effect and $\lambda_t$ is a \textit{time-specific, state-invariant} effect. 
+\end{assump}
+Note that $\gamma_s$ is a state-level fixed effect.
+
+
+
+Now, we define the dummy $D_{st}$ for high minimum wage laws on state $s$ at time $t$. We also assume that $\mathbb{E}({y}_{1 s t} -  {y}_{0 s t} |s,t)$ is a constant, denoted by $\delta$. Then,
+\begin{equation}
+    {y}_{i s t}=\gamma_{s}+\lambda_{t}+\delta {D}_{s t}+\varepsilon_{i s t} 
+    \end{equation}
+is our linear model. 
+
+As per usual, we assume strict exogeneity of the disturbances.
+\begin{assump}
+    \textbf{Strict exogeneity for DD.} $\mathbb{E}(\varepsilon_{ist} | s,t) = 0, \forall s,t.$
+\end{assump}
+
+
+
+We first consider the time difference for both states:
+\begin{equation}
+    \begin{array}{l}
+    \mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=P A, t=\operatorname{Nov}\right]-\mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=P A, t=F e b\right] \\
+    \quad=\lambda_{N o v}-\lambda_{F e b}
+    \end{array}
+    \end{equation}
+and
+
+\begin{equation}
+    \begin{array}{l}
+        \mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=N J, t=\operatorname{Nov}\right]-\mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=N J, t=F e b\right] \\
+    \quad=\lambda_{N o v}-\lambda_{F e b}+\delta
+    \end{array}
+    \end{equation}
+
+Now, we also take differences \textit{across states} (treatment and control):
+\begin{equation}
+    \begin{array}{l}
+    \left\{\mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=N J, t=N o v\right]-\mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=N J, t=F e b\right]\right\} \\
+    \quad-\left\{\mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=P A, t=N o v\right]-\mathbb{E}\left[\mathrm{Y}_{i s t} \mid s=P A, t=F e b\right]\right\}=\delta
+    \end{array}
+    \end{equation}
+which yields the causal effect of interest.
+
+
+The key identifying assumption for causality here is
+the idea of \textbf{parallel trends} between control and treatment groups. This means that the control group will provide a way to calculate an estimate of the counterfactual of the treatment state by removing the time trend and considering the state-specific unobserved effects.
+
+\begin{quote}
+    Treatment induces a deviation from this
+    common trend, as illustrated in figure 5.2.1. Although the
+    treatment and control states can differ, this difference is meant
+    to be captured by the state fixed effect, which plays the same
+    role as the unobserved individual effect in [FE]. (AP, p. 230)
+\end{quote}
+
+\begin{figure}[h!]
+    \includegraphics{DD_AP.png}
+\end{figure}
+
+This assumption can be investigated with data on multiple periods. Card and Krueger update their study with time series data on employment, which indicates that Pennsylvania wasn't very fit for a control, due to state-specific shocks and overall variations that are not related systematically to New Jersey (treatment). 
+
+\section{Regression DD}
+
+It is also possible to use DD in a regression framework, also controlling for relevant variables that could help make a stronger case for causality. For example, consider
+\begin{equation}
+    \mathrm{Y}_{i s t}=\alpha+\gamma N J_{s}+\lambda d_{t}+\delta\left(N J_{s} \cdot d_{t}\right)+\varepsilon_{i s t}
+\end{equation}
+where $NJ_s$ is a dummy for restaurants in New Jersey. The interaction term now has the same role as $D_{st}$ in the previous model. 
+
+This model is saturated, which means that the conditional mean takes four possible values: 
+\begin{equation}
+    \begin{aligned}
+    \alpha &=E\left[\mathrm{Y}_{i s t} \mid s=P A, t=F e b\right]=\gamma_{P A}+\lambda_{F e b} \\
+    \gamma &=E\left[\mathrm{Y}_{i s t} \mid s=N J, t=F e b\right]-E\left[\mathrm{Y}_{i s t} \mid s=P A, t=\mathrm{Feb}\right] \\
+    &=\gamma_{N J}-\gamma_{P A} \\
+    \lambda &=E\left[\mathrm{Y}_{i s t} \mid s=P A, t=N o v\right]-E\left[\mathrm{Y}_{i s t} \mid s=P A, t=F e b\right] \\
+    &=\lambda_{N o v}-\lambda_{F e b} \\
+    \delta &=\left\{E\left[\mathrm{Y}_{i s t} \mid s=N J, t=N o v\right]-E\left[\mathrm{Y}_{i s t} \mid s=N J, t=F e b\right]\right\} \\
+    &-\left\{E\left[\mathrm{Y}_{i s t} \mid s=P A, t=N o v\right]-E\left[\mathrm{Y}_{i s t} \mid s=P A, t=F e b\right]\right\} .
+    \end{aligned}
+\end{equation}
+
+Regression DD helps to conveniently estimate standard errors, allow for multiple controls and treatments, and treatments that are not binary -- i.e., that do not involve dummies, but instead some variation. For example:
+\begin{equation}
+    \mathrm{Y}_{i s t}=\gamma_{s}+\lambda_{t}+\delta\left(\mathrm{FA}_{s} \cdot d_{t}\right)+\varepsilon_{i s t}
+    \end{equation}
+where $\mathrm{FA}_{s}$ measures the fraction of teenagers likely to be affected by a minimum wage increase in each state (Card, 1992; AP, p. 235).
+
+
+It is also possible to add controls to the regression\footnote{AP, p. 237 discusses Granger causality tests, that are particularly suited for regression DD -- as it is possible to check the relevance of anticipatory or lagged effects.}:
+\begin{equation}
+    \mathrm{Y}_{i s t}=\gamma_{s}+\lambda_{t}+\delta\left(\mathrm{FA}_{s} \cdot d_{t}\right)+\mathrm{X}_{i s t}^{\prime} \beta+\varepsilon_{i s t}.
+    \end{equation}
+
+Another useful addition in the model for robustness is \textit{state-specific time trends}, which allow for states to follow (linearly) different trends:
+\begin{equation}
+    \mathrm{Y}_{i s t}=\gamma_{0 s}+\gamma_{1 s} t+\lambda_{t}+\delta \mathrm{D}_{s t}+\mathrm{X}_{i s t}^{\prime} \beta+\varepsilon_{i s t}
+    \end{equation}
+Here, $\gamma_{0s}$ represents different intercepts for each state. Note that this requires at least 3 periods for estimation -- and is still a low number for adequate inference. 
+
+\subsection{Potential problems in DD design}
+
+DD always, be it implicitly of explicitly, takes the form of a control-treament comparison. This implies that it is necessary to correctly consider difficulties regarding the composition and comparison of these groups.
+
+The composition of groups may change after treatment. For example, studying the effects of welfare programs for income maintenance may be specially difficult because, when such a program is implemented in a state, poor people in neighboring states that aren't attached to his/her land might move to the treated state. This would  cause a downward bias for income maintenance programs in regards to employment. 
+
+A possible way to fix this problem is to use the initial location (for example) as an instrument for the actual location in the model.\footnote{More on AP, p. 242-3.} 
+
+\section{Clustering and serial correlation for DD}
+
+Consider the standard DD model with additive state and time effects.
+\begin{equation}
+    \mathrm{Y}_{i s t}=\gamma_{s}+\lambda_{t}+\delta \mathrm{D}_{s t}+\varepsilon_{i s t}
+    \end{equation}
+We can consider that $\varepsilon_{ist}$ is the sum of a state-year shock, $v_{st}$, and an idiosyncratic disturbance, $\eta_{ist}$. In this case, $v_{st}$ could reflect some regional shock like a business cycle.
+
+Rewriting the model yields
+\begin{equation}
+    \mathrm{Y}_{i s t}=\gamma_{s}+\lambda_{t}+\delta \mathrm{D}_{s t}+v_{s t}+\eta_{i s t}
+\end{equation}
+As per usual, we assume $\mathbb{E}(v_{st}) = 0, \mathbb{E}(\eta_{ist} | s,t) = 0$.
+
+%This is a problem for DD models. 
+\begin{quote}
+    As with
+    the Moulton problem, state- and time-specific random effects
+    generate a clustering problem that affects statistical inference.
+    But that might be the least of our problems in this case. (AP, p. 317)
+\end{quote}
+
+Aside from the clustering problem, we also may have an inconsistent estimate of the causal effect. The empirical For Card and Krueger (1994), the DD estimator is:
+\begin{equation}
+    \hat{\delta}_{C K}=\left(\overline{\mathrm{Y}}_{s=N J, t=N o v}-\overline{\mathrm{Y}}_{s=N J, t=F e b}\right)-\left(\overline{\mathrm{Y}}_{s=P A, t=N o v}-\overline{\mathrm{Y}}_{s=P A, t=F e b}\right)
+    \end{equation}
+This is unbiased, since $\mathbb{E}(v_{st}) = \mathbb{E}(\eta_{ist}) = 0.$ However, consider the asymptotic argument for increasing group size:
+$$
+\operatorname{plim} \hat{\delta}_{C K} =\delta+\left\{\left(v_{s=N J, t=N o v}-v_{s=N J, t=F e b}\right)-\left(v_{s=P A, t=N o v}-v_{s=P A, t=F e b}\right)\right\} .
+$$
+\begin{quote}
+    Averaging larger and larger samples within New Jersey and
+Pennsylvania in a pair of periods does nothing to eliminate
+the regional shocks specific to a given location and period.
+With only two states and years, we have no way to distinguish the differences-in-differences generated by a policy change from the difference-in-dfferences due to the fact that,
+say, the New Jersey economy was holding steady in 1992
+while Pennsylvania was experiencing a cyclical downturn. \textit{The
+presence of vst amounts to a failure of the common trends
+assumption discussed in section 5.2.} (AP, p. 318)
+\end{quote}
+
+A possible solution to this problem is to analyze multiple groups over multiple time periods, \textit{hoping that} $v_{st}$ \textit{average out to zero.} Note that it is important, here, to have \textit{multiple groups,} not the group size. 
+
+Inference in DD models relies heavily on the behavior of $v_{st}$. If we consider it to be independent across groups and over time, then we go back to the Moulton problem discussed in FE. However, in most cases it is unreasonable to assume that $\{v_{st}\}$ isn't serially correlated. \begin{quote}
+    Almost
+certainly, for example, regional shocks are highly serially correlated: if things are bad in Pennsylvania in one month, they
+are likely to be about as bad in the next. [...] Any research design with a group structure
+where the group means are correlated can be said to have the
+serial correlation problem. (AP, p. 318)
+\end{quote}
+
+This means that, aside from the correction needed because of the correlation within groups that the presence $v_{st}$ implies, it is necessary to correct for the serial dependence of $\{v_{st}\}$. The simplest way to tackle this issue is to cluster one level higher -- for example, clustering for state instead of state and year.
+
+The main issue with this approach is that it reduces -- often substantially -- the number of groups in our sample, which may hinder inference. 
+
+\begin{quote}
+    With few clusters, we tend to underestimate
+either the serial correlation in a random shock like $v_{st}$ or the intraclass correlation, $\rho_e$, in the Moulton problem. \textit{The relevant dimension} for counting clusters in the Moulton problem
+\textit{is the number of groups, G.} (AP, p. 319)
+\end{quote}
+
+What can we do when the cluster count is low?
+\begin{enumerate}
+    \item \textbf{Get more clusters by collecting more data.} This is obvioulsy the first-best solution, but not always feasible. 
+    \item \textbf{Bias correction of clustered standard errors.} This means, in essence, inflating standard errors hoping to reduce bias, as in small samples (i.e., low $G$), $\mathbb{E}(\hat{e}_g\hat{e}_g') \neq \mathbb{E}({e}_g{e}_g')$.\footnote{More on AP, p. 320.}
+    \item \textbf{Recognizing that the fundamental unit of observation is a
+    cluster and not an individual unit within clusters.} This widens the confidence intervals for testing and will help avoding inference mistakes.
+    \item \textbf{Using group means instead of individual data.} The level of aggregation is the level
+    at which you’d like to cluster [...]. For serial correlation, this is the state, but
+    state averages cannot be used to estimate a model with a
+    full set of state effects. Also, since treatment status varies
+    within states, averaging up to the state level averages the
+    regressor of interest as well, changing the rules of the game
+    in a way we may not like (the estimator becomes IV using
+    group dummies as instruments). The group means approach
+    is therefore out of bounds for the serial correlation problem. (AP, p. 321)
+    \item \textbf{Block boostrap.}
+    \item \textbf{Parametric corrections.} For the Moulton problem, this
+    amounts to use of the Moulton factor. With serial correlation, this means correcting your standard errors for
+    first-order serial correlation at the group level. (AP, p. 322)
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Random Effects Estimator}
+
+The random effects framework is an alternative way of dealing with the unobserved effect $c_i$. As with pooled OLS, RE considers $c_i$ as part of the error term. 
+\begin{quote}
+    In fact,
+random effects analysis imposes more assumptions than those needed for pooled OLS: \textit{strict exogeneity}\footnote{Remember that pooled OLS needs only contemporaneous exogeneity for consistency.} in addition to orthogonality between $c_i$ and $x_{it}$. (AW, p. 292)
+\end{quote}
+
+
+
+\section{Consistency}
+
+\begin{assump}
+    \textbf{Strict exogeneity for RE.} \label{strict_exog_re}
+    \begin{enumerate}
+        \item $\mathbb{E}(u_{it} | \mathbf{x_i}, c_i) = 0, t = 1, ..., T;$
+        \item $\mathbb{E}(c_i | \mathbf{x_i}) = \mathbb{E}(c_i) = 0$.
+    \end{enumerate}
+\end{assump}
+Note that this is a very strong assumption: it requires \textit{strict} exogeneity for all regressors (1) \textit{and} for the unobserved effects (2) for all periods.
+
+For consistency, $\mathbb{E}\left(\mathbf{x}_{i t}^{\prime} c_{i}\right)=\mathbf{0}, \quad t=1,2, \ldots, T$ is a sufficient condition instead of (2); however, it doesn't afford much more generality, so (2) will be used (AW). 
+
+The advantage of imposing a more restrictive assumption than pooled OLS is the ability to exploit the serial correlation in the composite error term,$ v_{it} = c_i + u_{it}$, in a GLS framework. But GLS requires strict exogeneity for consistency.
+
+Under \ref{strict_exog_re}, the model can be rewritten as
+\begin{equation}
+    y_{i t}=\mathbf{x}_{i t} \boldsymbol{\beta}+v_{i t},
+\end{equation}
+\begin{equation}
+    y_{i t}=\mathbf{x}_{i t} \boldsymbol{\beta}+v_{i t}
+\end{equation}
+
+Writing the model for all time periods yields
+\begin{equation}
+    \mathbf{y}_{i}=\mathbf{X}_{i} \boldsymbol{\beta}+\mathbf{v}_{i}
+\end{equation}
+From this, $\mathbf{v_i}$ can be decomposed as $\mathbf{v_i} = c_i \mathbf{j_T + u_i}.$ We now define the unconditional variance matrix of $\mathbf{v_i}$ as
+$$\mathbf{\Omega} := \mathbb{E}(\mathbf{v_i v_i'}),$$ 
+a $T \times T$ positive definite matrix.
+
+This motivates our usual second assumption, i.e., the GLS full rank assumption.
+\begin{assump} \label{full_rank_re}
+    \textbf{GLS full rank for RE.} $\operatorname{rank} \mathbb{E}\left(\mathbf{X}_{i}^{\prime} \mathbf{\Omega}^{-1} \mathbf{X}_{i}\right)=K.$
+\end{assump}
+
+Under \ref{strict_exog_re} and \ref{full_rank_re}, (F)GLS is consistent. We could use a general unrestricted form for $\Omega$; however, this doesn't exploit the particular variance structure of the RE framework. 
+
+\section{Inference}
+
+\subsection{RE variance matrix}
+
+First, assume that $\mathbb{E}(u_{it}^2) = \sigma_u^2, \quad t = 1,2,..., T$ -- i.e., constant unconditional varianec across time.
+
+The second assumption is that the idiosyncratic disturbances are not serially correlated:
+$$ \mathbb{E}(u_{it} u_{is}) = 0, \forall t \neq s.$$ 
+
+Aside from the formal consistency assumptions, these two conditions, central to the RE estimator, imply that
+\begin{equation}
+    \mathbb{E}\left(v_{i t}^{2}\right)=\mathbb{E}\left(c_{i}^{2}\right)+2 \mathbb{E}\left(c_{i} u_{i t}\right)+\mathbb{E}\left(u_{i t}^{2}\right)=\sigma_{c}^{2}+\sigma_{u}^{2}
+\end{equation}
+where $2 \mathbb{E}\left(c_{i} u_{i t}\right) = 0$ from strict exogeneity, \ref{strict_exog_re}. 
+Furthermore, 
+\begin{equation}
+    \mathbb{E}\left(v_{i t} v_{i s}\right)=\mathbb{E}\left[\left(c_{i}+u_{i t}\right)\left(c_{i}+u_{i s}\right)\right]=\mathbb{E}\left(c_{i}^{2}\right)=\sigma_{c}^{2} .
+\end{equation}
+These results can be used to build the entire $\mathbf{\Omega}$ variance-covariance matrix for $\mathbf{v_i}$:
+\begin{equation}
+    \boldsymbol{\Omega}=\mathrm{E}\left(\mathbf{v}_{i} \mathbf{v}_{i}^{\prime}\right)=\left(\begin{array}{cccc}
+    \sigma_{c}^{2}+\sigma_{u}^{2} & \sigma_{c}^{2} & \cdots & \sigma_{c}^{2} \\
+    \sigma_{c}^{2} & \sigma_{c}^{2}+\sigma_{u}^{2} & \cdots & \vdots \\
+    \vdots & & \ddots & \sigma_{c}^{2} \\
+    \sigma_{c}^{2} & & & \sigma_{c}^{2}+\sigma_{u}^{2}
+    \end{array}\right),
+    \end{equation}
+which can be alternatively written as $\boldsymbol{\Omega}=\sigma_{u}^{2} \mathbf{I}_{T}+\sigma_{c}^{2} \mathbf{j}_{T} \mathbf{j}_{T}^{\prime}$. 
+
+When $\boldsymbol{\Omega}$ has this form, we say that it has the \textit{random effects structure.} The advantage of such $\boldsymbol{\Omega}$ is that it only requires two parameters for estimation, namely, $\sigma_c^2, sigma_u^2$. This greatly improves inference via degrees of freedom.
+
+We also know the serial correlation of the composite errors:
+\begin{equation}
+    \operatorname{Corr}\left(v_{i s}, v_{i t}\right)=\sigma_{c}^{2} /\left(\sigma_{c}^{2}+\sigma_{u}^{2}\right) \geq 0, s \neq t.
+\end{equation}
+Note that this doesn't tend to zero as $t, s$ get far apart. 
+\begin{quote}
+    Unlike standard models for serial correlation in time series settings, the random effects assumption
+implies strong persistence in the unobservables over time, due, of course, to the
+presence of $c_i$. (AW, p. 294)
+\end{quote}
+
+We sum up all of the assumptions required for the RE variance matrix in the following assumption.
+\begin{assump}
+    \textbf{Random effects variance structure.} \label{re_omega} \begin{enumerate}
+        \item $\mathbb{E}\left(\mathbf{u}_{i} \mathbf{u}_{i}^{\prime} \mid \mathbf{x}_{i}, c_{i}\right)=\sigma_{u}^{2} \mathbf{I}_{T} ;$
+        \item  $\mathbb{E}\left(c_{i}^{2} \mid \mathbf{x}_{i}\right)=\sigma_{c}^{2}$.
+    \end{enumerate}
+\end{assump}
+Note that (1) implies the unconditional variance of $\sigma_u^2$ and (2) implies no serial correlation of the idiosyncratic disturbances. 
+
+For FGLS, we define $\sigma_v^2 = \sigma_c^2 + \sigma_u^2$. Suppose that we have consistent estimators for $\sigma_c^2, \sigma_u^2$ (as will be the case). Then, 
+\begin{equation}
+    \hat{\boldsymbol{\Omega}} \equiv \hat{\boldsymbol{\sigma}}_{u}^{2} \mathbf{I}_{T}+\hat{\sigma}_{c}^{2} \mathbf{j}_{T} \mathbf{j}_{T}^{\prime}
+    \end{equation}
+is a positive definite $T \times T$ matrix. 
+
+From this, we can define the \textit{random effects estimator:}
+\begin{equation}
+    \hat{\boldsymbol{\beta}}_{R E}=\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \hat{\mathbf{\Omega}}^{-1} \mathbf{X}_{i}\right)^{-1}\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \hat{\mathbf{\Omega}}^{-1} \mathbf{y}_{i}\right) .
+\end{equation}
+It is important to highlight (again) that $\hat{\beta}_{RE}$ \textit{is consistent regardless of the form of} $\Omega$ -- which implies that \ref{re_omega} isn't necessary for consistency.
+
+We can estimate $\hat{\sigma}_c^2, \hat{\sigma}_u^2$ by first estimating $\hat{\sigma}_v^2$. 
+\begin{equation}
+    \hat{\sigma}_{v}^{2}=\frac{1}{(N T-K)} \sum_{i=1}^{N} \sum_{t=1}^{T} \check{v}_{i t}^{2}
+    \end{equation}
+is a consistent estimator for $\hat{\sigma}_v^2$, where $\check{v}_{i t}$ denotes the pooled OLS residuals. 
+
+Then, using the assumptions above (no serial correlation for $u_{it}, u_{is}$) and the $T(T-1)/2$ nonredundant error products, we estimate $\hat{\sigma}_c^2$. 
+\begin{equation}
+    \begin{aligned}
+    \mathrm{E}\left(\sum_{t=1}^{T-1} \sum_{s=t+1}^{T} v_{i t} v_{i s}\right) &=\sum_{t=1}^{T-1} \sum_{s=t+1}^{T} \mathrm{E}\left(v_{i t} v_{i s}\right)=\sum_{t=1}^{T-1} \sum_{s=t+1}^{T} \sigma_{c}^{2}=\sigma_{c}^{2} \sum_{t=1}^{T-1}(T-t) \\
+    &=\sigma_{c}^{2}((T-1)+(T-2)+\cdots+2+1)=\sigma_{c}^{2} T(T-1) / 2,
+    \end{aligned}
+    \end{equation}
+
+The sample equivalent, then, is:
+\begin{equation}
+    \hat{\sigma}_{c}^{2}=\frac{1}{[N T(T-1) / 2-K]} \sum_{i=1}^{N} \sum_{t=1}^{T-1} \sum_{s=t+1}^{T} \breve{v}_{i t} \check{v}_{i s}
+    \end{equation}
+where we again use $ \check{v}_{i t}$, the pooled OLS residuals, and correct for the degrees of freedom. 
+
+Now that we have $\hat{\sigma}_{c}^{2}$ and $\hat{\sigma}_{v}^{2}$, we can calculate $\hat{\sigma}_{u}^{2} = \hat{\sigma}_{v}^{2} - \hat{\sigma}_{c}^{2}$.
+
+\begin{quote}
+    As a practical matter, equation [$\hat{\sigma}_{c}^{2}$] is not guaranteed to be positive, although
+it is in the vast majority of applications. A negative value for $\hat{\sigma}_{c}^{2}$ is indicative of negative serial correlation in $u_{it}$, probably a substantial amount, which means that Assumption RE.3a [RE variance structure, conditional homoskedasticity] is violated. (AW, p. 296)
+\end{quote}
+
+\subsection{A robust variance matrix estimator for RE}
+
+If assumption \ref{re_omega} fails, we can simply use
+\begin{equation}
+    Avar(\hat{\beta})=\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \hat{\mathbf{\Omega}}^{-1} \mathbf{X}_{i}\right)^{-1}\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \hat{\mathbf{\Omega}}^{-1} \hat{\mathbf{v}}_{i} \hat{\mathbf{v}}_{i}^{\prime} \hat{\mathbf{\Omega}}^{-1} \mathbf{X}_{i}\right)\left(\sum_{i=1}^{N} \mathbf{X}_{i}^{\prime} \hat{\mathbf{\Omega}}^{-1} \mathbf{X}_{i}\right)^{-1}
+    \end{equation}
+and use the usual robust Wald statistics $W = (\mathbf{R} \hat{\boldsymbol{\beta}}-\mathbf{r})^{\prime}\left(\mathbf{R} \hat{\mathbf{V}} \mathbf{R}^{\prime}\right)^{-1}(\mathbf{R} \hat{\boldsymbol{\beta}}-\mathbf{r})$.
+
+\subsection{General Feasible GLS}
+
+If $\{u_{it}\}$ are generally heteroskedastic and serially correlated, a general estimator for $\Omega$ is
+\begin{equation}
+    \hat{\boldsymbol{\Omega}}=N^{-1} \sum_{i=1}^{N} \check{\mathbf{v}}_{i} \check{\mathbf{v}}_{i}^{\prime}
+    \end{equation}
+where $\check{\mathbf{v}}_{i}$ is the pooled OLS residuals. This is an asymptotically efficient variance estimator. 
+
+This is also more general than the RE framework. It isn't used very much for a couple of reasons. First, the idiosyncratic disturbances $\{u_{it}\}$  are usually considered axiomatically not serially correlated; any serial correlation would come from $c_i$. Furthermore, this general strategy requires estimation of many more parameters, which can yield poor finite sample properties. $\hat{\Omega}$ here requires the estimation of $T(T+1)/2$ parameters, while the RE matrix requires only estimation of $\hat{\sigma^2_c}$ and $\hat{\sigma^2_u}$.
+
+\section{Testing for unobserved effects}
+
+If all of the RE assumptions hold but the true model does not contain $c_i$, then pooled OLS is efficient and consistent. This can be tested with the null $H_0: \sigma_c^2 = 0$, using a simple AR(1) model. This is valid because, under the null, $v_{it}$ is serially uncorrelated. 
+
+Breusch and Pagan also developed a test based on a Lagrange Multiplier. The test statistic is\footnote{More on AW, p. 300.} 
+\begin{equation}
+    \frac{\sum_{i=1}^{N} \sum_{t=1}^{T-1} \sum_{s=1+1}^{T} \hat{v}_{i t} \hat{v}_{i s}}{\left[\sum_{i=1}^{N}\left(\sum_{t=1}^{T-1} \sum_{s=t+1}^{T} \hat{v}_{i t} \hat{v}_{i s}\right)^{2}\right]^{1 / 2}}
+    \end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Testing and comparing estimators}
+
+In this chapter, we develop a methodology that guides the selection of the correct estimator for a given model and shows the relations between different estimators.
+
+
+\section{Comparing panel estimators}
+
+\subsection{FE and FD for different assumption violations}
+
+First, when $T=2$, FE and FD are \textit{identical} in all respects (as time demeaning is equivalent to first differencing.) When $T > 2$, our choice depends on the assumptions regarding $\{u_{it}\}$, specifically its serial dependence. FD is more efficient when $\{u_{it}\}$ follows a random walk; FE takes the opposite stance, assuming that $\{u_{it}\}$ has no serial correlation.\footnote{This section seems not that important for our purposes.}
+
+However, if strict exogeneity does not hold, and $u_{it}$ is correlated with $\mathbf{x}_{is}$, for some $t, s$, FE and FD usually yield \textit{different probability limits.} In fact, any of the usual endogeneity problems, like OVB (for time-varying variables), simultaneity, measurement error, etc. will cause the two probability limits to differ. 
+
+If $x_{it}, u_{it}$ are correlated, we then no longer have \textit{contemporaneous exgoeneity} -- necessary even for pooled OLS (\ref{contemp_exog}) --, which yields inconsistent estimators. If $u_{it}$ is correlated with $\mathbf{x}_{is}$, $t \neq s$, the estimates will also be inconsistent. When $u_{it}$ is correlated with lags of $\mathbf{x}_{it}$, a possible way to solve this is by adding lags as regressors. The same can be said for correlation between $u_{it}$ and future values of $\mathbf{x}_{it}$, although adding future regressors does not yield usual interpretations in an economic model. 
+
+We now attempt to analyze the possible biases of FE and FD under some endogeneity problems.
+
+First, assume that contemporaneous exogeneity still holds, i.e., 
+\begin{equation}
+    \mathbb{E}(x_{it}'u_{it}) = 0, \forall t
+\end{equation}
+
+Under \ref{strict_exog_fe}, 
+
+\begin{equation}
+    \operatorname{plim}_{N \rightarrow \infty}\left(\hat{\boldsymbol{\beta}}_{F E}\right)=\boldsymbol{\beta}+\left[T^{-1} \sum_{t=1}^{T} \mathrm{E}\left(\ddot{\mathbf{x}}_{i i}^{\prime} \ddot{\mathbf{x}}_{i t}\right)\right]^{-1}\left[T^{-1} \sum_{t=1}^{T} \mathrm{E}\left(\ddot{\mathbf{x}}_{i t}^{\prime} u_{i t}\right)\right]^{-1}
+    \end{equation}
+
+Under contemporaneous exogeneity, 
+\begin{equation}
+    \left.\mathrm{E}\left(\ddot{\mathbf{x}}_{i t}^{\prime} u_{i t}\right)=\mathrm{E}\left[\left(\mathbf{x}_{i t}-\overline{\mathbf{x}}_{i}\right)^{\prime} u_{i t}\right)\right]=-\mathrm{E}\left(\overline{\mathbf{x}}_{i}^{\prime} u_{i t}\right)
+    \end{equation}
+and so
+\begin{equation}
+    T^{-1} \sum_{t=1}^{T} \mathrm{E}\left(\ddot{\mathbf{x}}_{i t}^{\prime} u_{i t}\right)=-T^{-1} \sum_{t=1}^{T} \mathrm{E}\left(\overline{\mathbf{x}}_{i}^{\prime} u_{i t}\right)=-\mathrm{E}\left(\overline{\mathbf{x}}_{i}^{\prime} \bar{u}_{i}\right)
+    \end{equation}
+
+If $\{\mathbf{x_it}, u_{it}\}$ is stable and weakly dependent, then both of these average moments are bounded. 
+
+The probability limit of $\hat{\beta}_{FE}$ is\footnote{This is much more detailed on AW, p. 322-3.}
+\begin{equation}
+    \operatorname{plim}_{N \rightarrow \infty}\left(\hat{\boldsymbol{\beta}}_{F E}\right)=\boldsymbol{\beta}+O(1) \cdot O\left(T^{-1}\right)=\boldsymbol{\beta}+O\left(T^{-1}\right) \equiv \boldsymbol{\beta}+\mathbf{r}_{F E}(T),
+    \end{equation}
+where $\mathbf{r}_{FE}(T) = O(T^{-1})$. This means, Intuitively, that the inconsistency in the FE estimator can be small if $T$ is large. 
+
+For the FD estimator, the general plim is:
+\begin{equation}
+    \operatorname{plim}_{N \rightarrow \infty}\left(\hat{\boldsymbol{\beta}}_{F D}\right)=\boldsymbol{\beta}+\left[(T-1)^{-1} \sum_{t=2}^{T} \mathrm{E}\left(\Delta \mathbf{x}_{i t}^{\prime} \Delta \mathbf{x}_{i t}\right)\right]^{-1}\left[(T-1)^{-1} \sum_{t=2}^{T} \mathrm{E}\left(\Delta \mathbf{x}_{i t}^{\prime} \Delta u_{i t}\right)\right]^{-1}
+    \end{equation}
+
+Under weak dependence of $\{\mathbf{x_it}\}$, the first average of the above equation is bounded. Under contemporaneous exogeneity, 
+\begin{equation}
+    \mathrm{E}\left(\Delta \mathbf{x}_{i t}^{\prime} \Delta u_{i t}\right)=-\left[\mathrm{E}\left(\mathbf{x}_{i t}^{\prime} u_{i, t-1}\right)+\mathrm{E}\left(\mathbf{x}_{i, t-1}^{\prime} u_{i t}\right)\right],
+    \end{equation}
+which is usually $\neq 0$ -- even as $T$ grows\footnote{Again, more on AW, p. 323. This is probably beyond the scope of the course. }. 
+
+\begin{quote}
+    The previous analysis shows that under contemporaneous exogeneity and weak
+dependence of the regressors and idiosyncratic errors, the FE estimator has an advantage over the FD estimator when T is large. (AW, p. 324)
+\end{quote}
+
+This analysis favors FE \textit{when contemporaneous exogeneity holds but strict exogeneity fails}, even if $\{y_{it}\}$ and some elements of $\{\mathbf{x}_{it}\}$ have unit roots. There's a catch, though: it depends on the critical assumption that $\{u_{it}\}$ is I(0) -- i.e., $y_{it}, \mathbf{x}_{it}$ must be \textit{cointegrated.} If that's not the case, then FE is no longer superior to FD in regards to inconsistency, and FE's inconsistency will grow as $T$ gets large. FD, by contrast, removes any unit roots, which rules out the possibility of spurious regressions. 
+
+\subsection{Relationship between RE and FE}
+
+IF $X$ varies little over time, FE and FD may lead to imprecise estimates, forcing us to use RE to learn anything about our parameters. If RE is appropriate, then it has much smaller variance than FE.
+
+We can rewrite $\Omega$ under RE using the fact that $\mathbf{j_T j_T}' = T$:
+\begin{equation}
+    \begin{aligned}
+    \boldsymbol{\Omega} &=\sigma_{u}^{2} \mathbf{I}_{T}+\sigma_{c}^{2} \mathbf{j}_{T} \mathbf{j}_{T}^{\prime}=\sigma_{u}^{2} \mathbf{I}_{T}+T \sigma_{c}^{2} \mathbf{j}_{T}\left(\mathbf{j}_{T}^{\prime} \mathbf{j}_{T}\right)^{-1} \mathbf{j}_{T}^{\prime} \\
+    &=\sigma_{u}^{2} \mathbf{I}_{T}+T \sigma_{c}^{2} \mathbf{P}_{T}=\left(\sigma_{u}^{2}+T \sigma_{c}^{2}\right)\left(\mathbf{P}_{T}+\eta \mathbf{Q}_{T}\right)
+    \end{aligned}
+    \end{equation}
+where $\mathbf{P}_{T} := \mathbf{I}_{T}-\mathbf{Q}_{T}=\mathbf{j}_{T}\left(\mathbf{j}_{T}^{\prime} \mathbf{j}_{T}\right)^{-1} \mathbf{j}_{T}^{\prime}$\footnote{$P_T$ is the projection matrix.} and $\eta := \sigma_{u}^{2} /\left(\sigma_{u}^{2}+T \sigma_{c}^{2}\right)$. Now, define $\mathbf{S}_T := \mathbf{P}_T + \eta \mathbf{Q}_T$. 
+
+Then, $\mathbf{S}_{T}^{-1}=\mathbf{P}_{T}+(1 / \eta) \mathbf{Q}_{T}$ and $\mathbf{S}_{T}^{-1 / 2}=\mathbf{P}_{T}+(1 / \sqrt{\eta}) \mathbf{Q}_{T}$ ($\mathbf{S_T, S_T^{-1/2}}$ are symmetric, since $\mathbf{P_T, Q_T}$ are symmetric.)
+
+$\mathbf{S}_{T}^{-1 / 2}=(1-\lambda)^{-1}\left[\mathbf{I}_{T}-\lambda \mathbf{P}_{T}\right]$, where $\lambda = 1 - \sqrt{\eta}.$
+
+We now write $\mathbf{\Omega}^{-1/2}$ as
+\begin{equation}
+ \boldsymbol{\Omega}^{-1 / 2}=\left(\sigma_{u}^{2}+T \sigma_{c}^{2}\right)^{-1 / 2}(1-\lambda)^{-1}\left[\mathbf{I}_{T}-\lambda \mathbf{P}_{T}\right]=\left(1 / \sigma_{u}\right)\left[\mathbf{I}_{T}-\lambda \mathbf{P}_{T}\right],
+\end{equation}
+
+where $\lambda=1-\left[\sigma_{u}^{2} /\left(\sigma_{u}^{2}+T \sigma_{c}^{2}\right)\right]^{1 / 2}$.
+
+If we know $\lambda$, we can effectively get the RE estimator by estimating the transformed equation 
+\begin{equation}
+    \mathbf{C}_{T} \mathbf{y}_{i}=\mathbf{C}_{T} \mathbf{X}_{i} \boldsymbol{\beta}+ \mathbf{C_T v_i}
+    \end{equation}
+by system OLS, where $\mathbf{C}_{T} \equiv\left[\mathbf{I}_{T}-\lambda \mathbf{P}_{T}\right]$. The transformed equation is:
+$\breve{\mathbf{y}}_{i}=\breve{\mathbf{X}}_{i} \boldsymbol{\beta}+\breve{\mathbf{v}}_{i}$
+
+The variance matrix of $\breve{\mathbf{v}}_i$ is $\mathrm{E}\left(\breve{\mathbf{v}}_{i} \breve{\mathbf{v}}_{i}^{\prime}\right)=\mathbf{C}_{T} \boldsymbol{\Omega} \mathbf{C}_{T}=\sigma_{u}^{2} \mathbf{I}_{T}$. This is ideal for OLS (homoskedasticity).
+
+Note that $\breve{\mathbf{y}}_i$ is $y_{it} - \lambda \bar{y}_i$, and similarly for $\breve{\mathbf{X}}_i$. We can then interpret this as simply estimating pooled OLS for:
+\begin{equation}
+    y_{i t}-\lambda \bar{y}_{i}=\left(\mathbf{x}_{i t}-\lambda \overline{\mathbf{x}}_{i}\right) \boldsymbol{\beta}+\left(v_{i t}-\lambda \bar{v}_{i}\right)
+    \end{equation}
+
+
+The feasible RE estimator replaces $\lambda$ for $\hat{\lambda}$, using variance estimates from the above pooled OLS regression.
+
+The RE estimator can be written as
+\begin{equation}
+    \hat{\boldsymbol{\beta}}_{R E}=\left(\sum_{i=1}^{N} \sum_{t=1}^{T} \breve{\mathbf{x}}_{i t}^{\prime} \breve{\mathbf{x}}_{i t}\right)^{-1}\left(\sum_{i=1}^{N} \sum_{t=1}^{T} \breve{\mathbf{x}}_{i t}^{\prime} \breve{y}_{i t}\right)
+    \end{equation}
+
+\begin{quote}
+    Equation [above] shows that the RE estimator is obtained by a \textit{quasi-time demeaning}: rather than removing the time average from the explanatory and dependent
+    variables at each $t$, RE estimation removes a \textit{fraction of the time average}. If $\hat{\lambda}$ is close
+    to unity, the RE and FE estimates tend to be close. (AW, p. 327)
+\end{quote}
+
+\begin{equation}
+    \hat{\lambda}=1-\left\{1 /\left[1+T\left(\hat{\sigma}_{c}^{2} / \hat{\sigma}_{u}^{2}\right)\right]\right\}^{1 / 2}
+    \end{equation}
+When $T\left(\hat{\sigma}_{c}^{2} / \hat{\sigma}_{u}^{2}\right)$ is large, the second term in $\hat{\lambda}$ is small, so it is close to unity -- and RE is close to FE. $\hat{\lambda} \to 1$ as $T \to \infty, \hat{\sigma}_{c}^{2} / \hat{\sigma}_{u}^{2} \rightarrow \infty$.
+
+\begin{quote}
+    As $\lambda$ approaches unity, the precision of the RE estimator
+approaches that of the FE estimator, and the e¤ects of time-constant explanatory
+variables become harder to estimate. (AW, p. 327)
+\end{quote}
+
+This shows that the inconsistency of RE can be small when $\sigma^2_c$ is large relative to $\sigma^2_u$ or if $T$ is large.
+
+In essence: 
+\begin{enumerate}
+    \item \textbf{Pooled OLS.} $\lambda = 0$.
+    \item \textbf{FE.} $\lambda = 1$.
+    \item \textbf{RE.} $\lambda = 1-\left\{1 /\left[1+T\left(\hat{\sigma}_{c}^{2} / \hat{\sigma}_{u}^{2}\right)\right]\right\}^{1 / 2}, 0 < \lambda < 1.$
+\end{enumerate}
+
+Between these estimators, we're varying how much is being time demeaned.
+
+
+
+
+\section{Hausman test}
+
+Hausman developed a test to systematically guide the decision between RE or FE frameworks. It is based on the difference between RE and FE estimates -- since FE is consistent and RE isn't, when $c_i$ is correlated with the regressors. This assumes that $x_{it}$ is strictly exogenous with respect to $u_{it}$.
+
+Some caveats: 
+\begin{itemize}
+    \item Strict exogeneity with respect to $u_{it}$ holds under the null and the alternative. If it doesn't, then both estimates would be biased. 
+    \item The test is usually implemented with \ref{re_omega} (variance structure of RE) being valid under the null. It implies that RE is more efficient than FE and simplifies computation of the test statistic -- but it does not yield a way to \textit{test} this assumption. Failure of this assumption causes the Hausman test to have a non-standard limiting distribution. (AW, p. 329)
+    \item We can only compare coefficients on \textit{time-varying} regressors, because of the inherent restrictions that FE imposes. 
+\end{itemize}
+
+Consider the model
+\begin{equation}
+    y_{i t}=\mathbf{x}_{i t} \boldsymbol{\beta}+c_{i}+u_{i t}=\mathbf{z}_{i} \gamma+\mathbf{w}_{i t} \boldsymbol{\delta}+c_{i}+u_{i t},
+    \end{equation}
+where $\mathbf{z_i}$ is a vector of intercept and time-invariant regressors, and $\mathbf{w_{it}}$ is a vector of time-varying covariates.
+
+
+\begin{quote}
+    A key component of the traditional Hausman test is showing that the asymptotic
+variance of the FE estimator is never smaller, and is usually strictly larger, than the
+asymptotic variance of the RE estimator.  (AW, p. 330)
+\end{quote}
+\begin{equation}
+    \operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{F E}\right)=\sigma_{u}^{2}\left[\mathrm{E}\left(\ddot{\mathbf{W}}_{i}^{\prime} \ddot{\mathbf{W}}_{i}\right)\right]^{-1} / N
+    \end{equation}
+
+Let $\breve{\mathbf{w}}_{i t}=\mathbf{w}_{i t}-\lambda \overline{\mathbf{w}}_{i}$ be the quasi-time demeaned time-varying covariates. To get Avar($\hat{\delta}_{RE}$), we need the residuals from the pooled regression: $\breve{\mathbf{w}}_{i t}$ on $(1-\lambda) \mathbf{z}_{i}$. These residuals are called $\tilde{\mathbf{w}}_{it}$. Then, 
+\begin{equation}
+    \operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{R E}\right)=\sigma_{u}^{2}\left[\mathrm{E}\left(\tilde{\mathbf{W}}_{i}^{\prime} \tilde{\mathbf{W}}_{i}\right)\right]^{-1} / N
+    \end{equation}
+$\operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{F E}\right) - \operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{R E}\right)$ is positive definite because $\mathrm{E}\left(\tilde{\mathbf{W}}_{i}^{\prime} \tilde{\mathbf{W}}_{i}\right)-\mathrm{E}\left(\ddot{\mathbf{W}}_{i}^{\prime} \ddot{\mathbf{W}}_{i}\right)$ is positive definite\footnote{More info on AW, p. 330.}.
+
+\begin{equation}
+    \begin{aligned}
+    \mathrm{E}\left(\tilde{\mathbf{W}}_{i}^{\prime} \tilde{\mathbf{W}}_{i}\right)-\mathrm{E}\left(\ddot{\mathbf{W}}_{i}^{\prime} \ddot{\mathbf{W}}_{i}\right)=&(1-\lambda)^{2} \mathrm{E}\left[\left(\overline{\mathbf{w}}_{i}-\overline{\mathbf{w}}_{i}^{*}\right)^{\prime}\left(\overline{\mathbf{w}}_{i}-\overline{\mathbf{w}}_{i}^{*}\right)\right] \\
+    &+(1-\lambda) \sum_{t=1}^{T} \ddot{\mathbf{w}}_{i t}^{\prime}\left(\overline{\mathbf{w}}_{i}-\overline{\mathbf{w}}_{i}^{*}\right)+(1-\lambda) \sum_{t=1}^{T}\left(\overline{\mathbf{w}}_{i}-\overline{\mathbf{w}}_{i}^{*}\right)^{\prime} \ddot{\mathbf{w}}_{i t} \\
+    =&(1-\lambda)^{2} \mathrm{E}\left[\left(\overline{\mathbf{w}}_{i}-\overline{\mathbf{w}}_{i}^{*}\right)^{\prime}\left(\overline{\mathbf{w}}_{i}-\overline{\mathbf{w}}_{i}^{*}\right)\right],
+    \end{aligned}
+\end{equation}
+where the last equality follows from $\sum_{t=1}^{T} \ddot{\mathbf{w}}_{i t}=\mathbf{0}, \forall i$. For $\lambda < 1$, this is positive definite. 
+
+The \textbf{Hausman statistic} is defined as:
+\begin{equation}
+    H=\left(\hat{\boldsymbol{\delta}}_{F E}-\hat{\boldsymbol{\delta}}_{R E}\right)^{\prime}\left[\operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{F E}\right)-\operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{R E}\right)\right]^{-1}\left(\hat{\boldsymbol{\delta}}_{F E}-\hat{\boldsymbol{\delta}}_{R E}\right)
+ \end{equation}
+ which has a $\chi_M^2$ distribution under the null.\footnote{This is expected, because it is effectively a sum of standard normal distributions.} 
+
+ \begin{quote}
+    It is best to use the same estimate of $\sigma_u^2$ (based on either FE
+    or RE) in both places [$\operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{F E}\right)$ and $\operatorname{Avar}\left(\hat{\boldsymbol{\delta}}_{R E}\right)$]. (AW, p. 331)
+ \end{quote}
+
+If we want to test for a single coefficient, we can apply a standard $t-$test: $\left(\hat{\delta}_{F E}-\hat{\delta}_{R E}\right) /\left\{\left[\operatorname{se}\left(\hat{\delta}_{F E}\right)\right]^{2}-\left[\operatorname{se}\left(\hat{\delta}_{R E}\right)\right]^{2}\right\}^{1 / 2}$
+
+\begin{quote}
+    First, if there are no time-constant
+variables (except an overall intercept) in the RE estimation, the null hypothesis is
+$Cov(\bar{\mathbf{w}}_i, c_i) = 0$, which means we are \textit{really testing whether the time-average of the $w_{it}$
+is correlated with the unobserved effect.} [...] with a rich set of controls in $z_i$, it is possible for $\bar{\mathbf{w}}_i - \bar{\mathbf{w}}_i^*$ to be uncorrelated with
+ci even though $\bar{\mathbf{w}}_i$ is correlated with $c_i$. (AW, p. 331)
+\end{quote}
+
+The Hausman test can be written in regression form as: 
+\begin{equation}
+    y_{i t}=\mathbf{x}_{i t} \boldsymbol{\beta}+\overline{\mathbf{w}}_{i} \xi+a_{i}+u_{i t},
+    \end{equation}
+where $c_{i}=\psi+\overline{\mathbf{w}}_{i} \xi+a_{i}.$ In this case, the null is $H_0: \xi = 0$.\footnote{More on AW, p. 332-3.} 
+
+
+
+
+\chapter{Dynamic models}
+
+AP, 5.3-4.
+
+
+
+\chapter{Sample selection}
+
+AW, 17.7 (new ed.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
